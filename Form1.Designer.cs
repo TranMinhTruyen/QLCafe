@@ -73,13 +73,14 @@
             this.button22 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button24 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.button29 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -274,7 +275,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(478, 718);
+            this.tabPage2.Size = new System.Drawing.Size(478, 327);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Khu B";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -636,6 +637,14 @@
             this.panel2.Size = new System.Drawing.Size(342, 400);
             this.panel2.TabIndex = 6;
             // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(84, 6);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(61, 28);
+            this.textBox5.TabIndex = 4;
+            // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -697,19 +706,21 @@
             this.button28.Text = "Gộp bàn";
             this.button28.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // button29
             // 
-            this.textBox5.Location = new System.Drawing.Point(84, 6);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(61, 28);
-            this.textBox5.TabIndex = 4;
+            this.button29.Location = new System.Drawing.Point(352, 543);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(75, 23);
+            this.button29.TabIndex = 7;
+            this.button29.Text = "button29";
+            this.button29.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1275, 645);
+            this.Controls.Add(this.button29);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.tabControl1);
@@ -787,6 +798,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Button button29;
     }
 }
 
