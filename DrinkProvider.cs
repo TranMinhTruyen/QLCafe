@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Cafe
 {
@@ -27,23 +28,55 @@ namespace Cafe
         #endregion
 
         #region Methods
-        public List<Drink> GetDrinkByCategoryId(long id)
+        public List<Drink> GetDrink_ByCategoryId(long idCategory)
         {
-            List<Drink> list = new List<Drink>();
+            List<Drink> listDrink = new List<Drink>();
 
-            string query = "SELECT * from Drink WHERE IdCategory = " + id.ToString();
+            string query = "SELECT * from Drink WHERE IdCategory = " + idCategory.ToString();
 
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            DataTable dataDrink = DataProvider.Instance.ExecuteQuery(query);
 
-            foreach (DataRow item in data.Rows)
+            foreach (DataRow item in dataDrink.Rows)
             {
                 Drink drink = new Drink(item);
 
-                list.Add(drink);
+                listDrink.Add(drink);
             }
 
-            return list;
-        } 
+            return listDrink;
+        }
+
+        // User For Checking Another Method
+        public long GetDrinkId(long idDrink) // Unit Test
+        {
+            string query = "SELECT * FROM Drink WHERE Id = " + idDrink.ToString();
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            if (data.Rows.Count > 0)
+            {
+                Drink drink = new Drink(data.Rows[0]);
+
+                return drink.Id;
+            }
+
+            return -1;
+        }
+
+        public void LoadDrink_ByCategoryId(ComboBox cbDrink , ComboBox cbCategory, object sender)
+        {
+            long idCategory = CategoryProvider.Instance.GetCategoryId(cbCategory, sender);
+
+            if (idCategory != -1)
+            {
+                List<Drink> listDrink = GetDrink_ByCategoryId(idCategory);
+
+                cbDrink.DataSource = listDrink;
+                cbDrink.DisplayMember = "Name";
+            }
+            else
+                cbDrink.Text = "Chưa có danh sách thức uống";
+        }
         #endregion
     }
 }

@@ -28,7 +28,7 @@ namespace Cafe
         #endregion
 
         // Connection String
-        private string connectSTR = @"Data Source=.\QuanLyCaPhe.db; Version=3";
+        private string connectSTR = @"Data Source=..\..\QuanLyCaPhe.db; Version=3";
 
         #region Methods
         public DataTable ExecuteQuery(string query)
@@ -43,6 +43,42 @@ namespace Cafe
 
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(command); 
                 adapter.Fill(data);
+
+                connection.Close();
+            }
+
+            return data;
+        }
+
+        public int ExecuteNonQuery(string query)
+        {
+            int data = 0;
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectSTR))
+            {
+                connection.Open();
+
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+
+                data = command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+
+            return data;
+        }
+
+        public object ExecuteScalar(string query)
+        {
+            object data = 0;
+
+            using (SQLiteConnection connection = new SQLiteConnection(connectSTR))
+            {
+                connection.Open();
+
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+
+                data = command.ExecuteScalar();
 
                 connection.Close();
             }
