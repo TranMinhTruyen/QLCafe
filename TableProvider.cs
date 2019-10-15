@@ -90,18 +90,119 @@ namespace Cafe
             btn.BackColor = Color.Red;
         }
 
-        public void UpdateTableStatus_1(long idTable)
+        public bool UpdateTableStatus_1(long idTable) // Unit Test
         {
-            string query = "UPDATE TableDrink SET Status = 1 WHERE Id = " + idTable.ToString();
+            long tableCount = 0;
 
-            DataProvider.Instance.ExecuteNonQuery(query);
+            List<Table> listTable = GetTableList();
+
+            foreach (Table item in listTable)
+            {
+                if (item.Id == idTable)
+                {
+                    tableCount++;
+
+                    break;
+                }
+            }
+
+            if (tableCount > 0)
+            {
+                string query = "UPDATE TableDrink SET Status = 1 WHERE Id = " + idTable.ToString();
+
+                DataProvider.Instance.ExecuteNonQuery(query);
+
+                return true;
+            }
+            else
+                return false;
         }
 
-        public void UpdateTableStatus_0(long idTable)
+        public bool UpdateTableStatus_0(long idTable) // Unit Test
         {
-            string query = "UPDATE TableDrink SET Status = 0 WHERE Id = " + idTable.ToString();
+            long tableCount = 0;
 
-            DataProvider.Instance.ExecuteNonQuery(query);
+            List<Table> listTable = GetTableList();
+
+            foreach (Table item in listTable)
+            {
+                if (item.Id == idTable)
+                {
+                    tableCount++;
+
+                    break;
+                }
+            }
+
+            if (tableCount > 0)
+            {
+                string query = "UPDATE TableDrink SET Status = 0 WHERE Id = " + idTable.ToString();
+
+                DataProvider.Instance.ExecuteNonQuery(query);
+
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public bool SwitchTable(long idTableOld, long idTableNew) // Unit Test
+        {
+            long idBillOld = BillProvider.Instance.GetBillId_ByTableId(idTableOld);
+            long idBillNew = BillProvider.Instance.GetBillId_ByTableId(idTableNew);
+
+            long tableOldCount = 0;
+            long tableNewCount = 0;
+
+            List<Table> listTable = GetTableList();
+
+            foreach (Table item in listTable)
+            {
+                if (item.Id == idTableOld)
+                {
+                    tableOldCount++;
+
+                    break;
+                }
+            }
+
+            foreach (Table item in listTable)
+            {
+                if (item.Id == idTableNew)
+                {
+                    tableNewCount++;
+
+                    break;
+                }
+            }
+
+            if (tableOldCount > 0 && tableNewCount > 0)
+            {
+                string query1 = "UPDATE Bill SET IdTable = " + idTableNew.ToString() + " WHERE IdTable =  " + idTableOld.ToString() + " AND id = " + idBillOld.ToString() + " AND Status = 0";
+
+                DataProvider.Instance.ExecuteNonQuery(query1);
+
+                string query2 = "UPDATE Bill SET IdTable = " + idTableOld.ToString() + " WHERE IdTable =  " + idTableNew.ToString() + " AND id = " + idBillNew.ToString() + " AND Status = 0";
+
+                DataProvider.Instance.ExecuteNonQuery(query2);
+
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public void LoadListTable(ComboBox cbTable, List<Table> listTable)
+        {
+            if(listTable.Count > 0)
+            {
+                cbTable.DataSource = listTable;
+                cbTable.DisplayMember = "Name";
+            }
+            else
+            {
+                cbTable.Text = "None";
+            }
         }
         #endregion
     }

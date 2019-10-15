@@ -27,30 +27,45 @@ namespace Cafe
         #endregion
 
         #region Methods
-        public List<BillInfo> GetBillInfoList(long idBill)
+        public bool InsertBillInfo(long idDrink, long idBill, long countDrink = 1) // Unit Test
         {
-            List<BillInfo> listBillInfo = new List<BillInfo>();
+            long drinkCount = 0;
+            long billCount = 0;
 
-            string query = "SELECT * FROM BillInfo WHERE IdBill = " + idBill.ToString();
+            List<Drink> listDrink = DrinkProvider.Instance.LoadListDrink();
+            List<Bill> listBill = BillProvider.Instance.LoadListBill();
 
-            DataTable dataBillInfo = DataProvider.Instance.ExecuteQuery(query);
-
-            foreach (DataRow item in dataBillInfo.Rows)
+            foreach (Drink item in listDrink)
             {
-                BillInfo billInfo = new BillInfo(item);
+                if (item.Id == idDrink)
+                {
+                    drinkCount++;
 
-                listBillInfo.Add(billInfo);
+                    break;
+                }
             }
 
-            return listBillInfo;
-        }
+            foreach (Bill item in listBill)
+            {
+                if (item.Id == idBill)
+                {
+                    billCount++;
 
-        public void InsertBillInfo(long idDrink, long idBill, long countDrink = 1)
-        {
-            long id = GetMaxBillInfoId() + 1;
-            string query = "INSERT INTO BillInfo (Id, IdDrink, IdBill, CountDrink) VALUES (" + id.ToString() + "," + idDrink.ToString() + "," + idBill.ToString() + "," + countDrink + ")";
+                    break;
+                }
+            }
 
-            DataProvider.Instance.ExecuteNonQuery(query);
+            if (billCount > 0 && drinkCount > 0)
+            {
+                long id = GetMaxBillInfoId() + 1;
+                string query = "INSERT INTO BillInfo (Id, IdDrink, IdBill, CountDrink) VALUES (" + id.ToString() + "," + idDrink.ToString() + "," + idBill.ToString() + "," + drinkCount + ")";
+
+                DataProvider.Instance.ExecuteNonQuery(query);
+
+                return true;
+            }
+            else
+                return false;
         }
 
         public long GetMaxBillInfoId()
@@ -68,11 +83,46 @@ namespace Cafe
             }
         }
 
-        public void UpdateBillInfo(long idDrink, long idBill)
+        public bool UpdateBillInfo(long idDrink, long idBill) // Unit Test
         {
-            string query = "UPDATE BillInfo SET CountDrink = CountDrink + 1 WHERE IdDrink = " + idDrink.ToString() + " AND IdBill = " + idBill.ToString();
+            long drinkCount = 0;
+            long billCount = 0;
 
-            DataProvider.Instance.ExecuteNonQuery(query); 
+            List<Drink> listDrink = DrinkProvider.Instance.LoadListDrink();
+            List<Bill> listBill = BillProvider.Instance.LoadListBill();
+
+            foreach (Drink item in listDrink)
+            {
+                if(item.Id == idDrink)
+                {
+                    drinkCount++;
+
+                    break;
+                }
+            }
+
+            foreach (Bill item in listBill)
+            {
+                if (item.Id == idBill)
+                {
+                    billCount++;
+
+                    break;
+                }
+            }
+
+            if (drinkCount > 0 && billCount > 0)
+            {
+                string query = "UPDATE BillInfo SET CountDrink = CountDrink + 1 WHERE IdDrink = " + idDrink.ToString() + " AND IdBill = " + idBill.ToString();
+
+                DataProvider.Instance.ExecuteNonQuery(query);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public BillInfo GetBillInfoId_ByDrinkID(long idDrink, long idBill) // Unit Test
@@ -91,6 +141,60 @@ namespace Cafe
            {
                return null;
            }
+        }
+
+        public bool DeleteBillInfo_By_idDrink(long idDrink) // Unit Test
+        {
+            long drinkCount = 0;
+
+            List<Drink> listDrink = DrinkProvider.Instance.LoadListDrink();
+
+            foreach (Drink item in listDrink)
+            {
+                if (item.Id == idDrink)
+                {
+                    drinkCount++;
+
+                    break;
+                }
+            }
+
+            List<long> listBillId = BillProvider.Instance.GetBillId_By_IdDrink(idDrink);
+
+            if (drinkCount > 0)
+            {
+                string query = "DELETE FROM BillInfo WHERE IdDrink = " + idDrink.ToString();
+
+                DataProvider.Instance.ExecuteNonQuery(query);
+
+                foreach (long item in listBillId)
+                {
+                    List<BillInfo> listBillInfo = GetListBillInfo_By_Id(item);
+
+                    if (listBillInfo.Count < 1)
+                        BillProvider.Instance.DeleteBill(item);
+                }
+
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public List<BillInfo> GetListBillInfo_By_Id(long id)
+        {
+            List<BillInfo> a = new List<BillInfo>();
+
+            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM BillInfo WHERE IdBill = " + id.ToString());
+
+            foreach (DataRow item in data.Rows)
+            {
+                BillInfo billInfo = new BillInfo(item);
+
+                a.Add(billInfo);
+            }
+
+            return a;
         }
         #endregion
     }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnQLThucUong = new System.Windows.Forms.Button();
+            this.btnQLDrink = new System.Windows.Forms.Button();
+            this.btnThongKe = new System.Windows.Forms.Button();
             this.txtInfo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTongTien = new System.Windows.Forms.TextBox();
@@ -46,8 +46,11 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnChangeTable = new System.Windows.Forms.Button();
             this.flowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.cbTable = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnQLCategory = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +59,9 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.btnQLThucUong);
+            this.panel1.Controls.Add(this.btnQLCategory);
+            this.panel1.Controls.Add(this.btnQLDrink);
+            this.panel1.Controls.Add(this.btnThongKe);
             this.panel1.Controls.Add(this.txtInfo);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -66,19 +71,31 @@
             this.panel1.Size = new System.Drawing.Size(1142, 98);
             this.panel1.TabIndex = 2;
             // 
-            // btnQLThucUong
+            // btnQLDrink
             // 
-            this.btnQLThucUong.Enabled = false;
-            this.btnQLThucUong.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQLThucUong.Image = ((System.Drawing.Image)(resources.GetObject("btnQLThucUong.Image")));
-            this.btnQLThucUong.Location = new System.Drawing.Point(160, 5);
-            this.btnQLThucUong.Margin = new System.Windows.Forms.Padding(4);
-            this.btnQLThucUong.Name = "btnQLThucUong";
-            this.btnQLThucUong.Size = new System.Drawing.Size(228, 80);
-            this.btnQLThucUong.TabIndex = 0;
-            this.btnQLThucUong.Text = "QUẢN LÝ THỨC UỐNG";
-            this.btnQLThucUong.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnQLThucUong.UseVisualStyleBackColor = true;
+            this.btnQLDrink.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLDrink.Location = new System.Drawing.Point(324, 5);
+            this.btnQLDrink.Margin = new System.Windows.Forms.Padding(4);
+            this.btnQLDrink.Name = "btnQLDrink";
+            this.btnQLDrink.Size = new System.Drawing.Size(156, 80);
+            this.btnQLDrink.TabIndex = 0;
+            this.btnQLDrink.Text = "Quản lý thức uống";
+            this.btnQLDrink.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQLDrink.UseVisualStyleBackColor = true;
+            this.btnQLDrink.Click += new System.EventHandler(this.btnQLDrink_Click);
+            // 
+            // btnThongKe
+            // 
+            this.btnThongKe.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKe.Location = new System.Drawing.Point(160, 5);
+            this.btnThongKe.Margin = new System.Windows.Forms.Padding(4);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(156, 80);
+            this.btnThongKe.TabIndex = 0;
+            this.btnThongKe.Text = "Thống kê";
+            this.btnThongKe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnThongKe.UseVisualStyleBackColor = true;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
             // txtInfo
             // 
@@ -231,16 +248,17 @@
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader5.Width = 114;
             // 
-            // button7
+            // btnChangeTable
             // 
-            this.button7.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(463, 542);
-            this.button7.Margin = new System.Windows.Forms.Padding(4);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(190, 42);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "Chuyển bàn";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnChangeTable.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeTable.Location = new System.Drawing.Point(463, 542);
+            this.btnChangeTable.Margin = new System.Windows.Forms.Padding(4);
+            this.btnChangeTable.Name = "btnChangeTable";
+            this.btnChangeTable.Size = new System.Drawing.Size(190, 42);
+            this.btnChangeTable.TabIndex = 0;
+            this.btnChangeTable.Text = "Chuyển bàn";
+            this.btnChangeTable.UseVisualStyleBackColor = true;
+            this.btnChangeTable.Click += new System.EventHandler(this.btnChangeTable_Click);
             // 
             // flowPanel
             // 
@@ -250,33 +268,72 @@
             this.flowPanel.Size = new System.Drawing.Size(637, 411);
             this.flowPanel.TabIndex = 7;
             // 
+            // cbTable
+            // 
+            this.cbTable.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTable.FormattingEnabled = true;
+            this.cbTable.Location = new System.Drawing.Point(269, 546);
+            this.cbTable.Name = "cbTable";
+            this.cbTable.Size = new System.Drawing.Size(187, 35);
+            this.cbTable.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 550);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(247, 27);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Bàn muốn chuyển sang:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnQLCategory
+            // 
+            this.btnQLCategory.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLCategory.Location = new System.Drawing.Point(488, 5);
+            this.btnQLCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.btnQLCategory.Name = "btnQLCategory";
+            this.btnQLCategory.Size = new System.Drawing.Size(156, 80);
+            this.btnQLCategory.TabIndex = 0;
+            this.btnQLCategory.Text = "Quản lý loại thức uống";
+            this.btnQLCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQLCategory.UseVisualStyleBackColor = true;
+            this.btnQLCategory.Click += new System.EventHandler(this.btnQLCategory_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1142, 593);
+            this.Controls.Add(this.cbTable);
             this.Controls.Add(this.flowPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnChangeTable);
             this.Controls.Add(this.btnThanhToan);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Quản lý cà phê";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnQLThucUong;
+        private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.TextBox txtTongTien;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
@@ -291,9 +348,13 @@
         private System.Windows.Forms.Button btnBillAdd;
         private System.Windows.Forms.ComboBox cbDrink;
         private System.Windows.Forms.ComboBox cbCategory;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnChangeTable;
         private System.Windows.Forms.FlowLayoutPanel flowPanel;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ComboBox cbTable;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnQLDrink;
+        private System.Windows.Forms.Button btnQLCategory;
     }
 }
 

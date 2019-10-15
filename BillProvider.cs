@@ -44,16 +44,43 @@ namespace Cafe
             return -1;
         }
 
-        public void InsertBill(long idTable)
+        public bool InsertBill(long idTable)
         {
-            long id = GetMaxBillId() + 1;
+            long tableCount = 0;
 
-            string checkInDate = DateTime.Now.ToString();
+            List<Table> listTable = TableProvider.Instance.GetTableList();
 
-            string query = "INSERT INTO Bill (Id,DateCheckIn,IdTable) VALUES (" + id.ToString() + "," + "'" + checkInDate + "'" + "," + idTable.ToString() + ")";
+            foreach (Table item in listTable)
+            {
+                if (item.Id == idTable)
+                {
+                    tableCount++;
 
-            DataProvider.Instance.ExecuteNonQuery(query);
-        }
+                    break;
+                }
+            }
+
+            if (tableCount > 0)
+            {
+                long id = GetMaxBillId() + 1;
+
+                DateTime now = DateTime.Now;
+
+                string day = now.Day.ToString();
+                string month = now.Month.ToString();
+                string year = now.Year.ToString();
+                string timeCheckIn = DateTime.Now.ToString("hh:mm:ss tt");
+
+                string query = "INSERT INTO Bill (Id,Day,Month,Year,TimeCheckIn,IdTable) VALUES (" + id.ToString() + "," + day + "," + month + "," + year + "," + "'" + timeCheckIn + "'" + "," + idTable.ToString() + ")";
+
+                DataProvider.Instance.ExecuteNonQuery(query);
+
+                return true;
+            }
+            else
+                return false;
+
+        } // Unit Test
 
         public long GetMaxBillId()
         {
@@ -74,8 +101,8 @@ namespace Cafe
         public void CreateNewBill_Or_UpdateBill(Table table, ComboBox cbDrink)
         {
             long idBillMax;
-            long idDrink;
 
+            long idDrink = (cbDrink.SelectedItem as Drink).Id; ;
             long idBill = GetBillId_ByTableId(table.Id);
 
             if (idBill == -1)
@@ -83,14 +110,11 @@ namespace Cafe
                 InsertBill(table.Id);
 
                 idBillMax = GetMaxBillId();
-                idDrink = (cbDrink.SelectedItem as Drink).Id;
 
                 BillInfoProvider.Instance.InsertBillInfo(idDrink, idBillMax);
             }
             else
             {
-                idDrink = (cbDrink.SelectedItem as Drink).Id;
-
                 BillInfo billInfo = BillInfoProvider.Instance.GetBillInfoId_ByDrinkID(idDrink, idBill);
 
                 if (billInfo != null)
@@ -104,14 +128,123 @@ namespace Cafe
             }
         }
 
-        public void UpdateStatusBill(long idBill)
+        public bool UpdateStatusBill(long idBill, long totalPrice) // Unit Test
         {
-            string checkOutDate = DateTime.Now.ToString();
+            long billCount = 0;
 
-            string query = "UPDATE Bill SET DateCheckOut = " + "'" + checkOutDate + "'" + ", Status = 1 WHERE id = " + idBill.ToString();
+            List<Bill> listBill = BillProvider.Instance.LoadListBill();
 
-            DataProvider.Instance.ExecuteNonQuery(query);
-        } 
+            foreach (Bill item in listBill)
+            {
+                if (item.Id == idBill)
+                {
+                    billCount++;
+
+                    break;
+                }
+            }
+
+            if (billCount > 0)
+            {
+                string timeCheckOut = DateTime.Now.ToString("hh:mm:ss tt");
+                string query = "UPDATE Bill SET TimeCheckOut = " + "'" + timeCheckOut + "'" + ", Status = 1, TotalPrice = " + totalPrice.ToString() + " WHERE id = " + idBill.ToString();
+
+                DataProvider.Instance.ExecuteNonQuery(query);
+
+                return true;
+            }
+            else
+                return false;
+
+        }
+
+        public DataTable LoadPaidBill_By_MonthAndYear(long month, long year) // Unit Test
+        {
+            string query = "SELECT TableDrink.Name as [Tên bàn], Bill.TotalPrice [Tổng tiền], Bill.Day || '/' || Bill.Month || '/' || Bill.Year as [Ngày thanh toán], Bill.TimeCheckIn as [Giờ tạo hóa đơn], bill.TimeCheckOut as [Giờ xuất hóa đơn] FROM Bill, TableDrink WHERE Bill.Month = " + month.ToString() + " AND Bill.Year = " + year.ToString()+ " AND Bill.Status = 1 AND TableDrink.Id = Bill.IdTable";
+
+            DataTable PaidBill = DataProvider.Instance.ExecuteQuery(query);
+
+            return PaidBill;
+        }
+
+        public void LoadPaidBill(DataGridView dataThongKe, DateTimePicker dateTimeThongKe)
+        {
+            string monthYear = dateTimeThongKe.Value.Month.ToString() + "/" + dateTimeThongKe.Value.Year.ToString();
+
+            string[] slitDateTime = monthYear.Split('/');
+
+            long month = Convert.ToInt64(slitDateTime[0]);
+
+            long year = Convert.ToInt64(slitDateTime[1]);
+
+            dataThongKe.DataSource = BillProvider.Instance.LoadPaidBill_By_MonthAndYear(month, year);
+        }
+
+        public List<Bill> LoadListBill()
+        {
+            string query = "SELECT * FROM Bill";
+
+            List<Bill> listBill = new List<Bill>();
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Bill bill = new Bill(item);
+
+                listBill.Add(bill);
+            }
+
+            return listBill;
+        }
+
+        public List<long> GetBillId_By_IdDrink(long idDrink) // Unit Test
+        {
+            List<long> listBillId = new List<long>();
+
+            string query = "SELECT IdBill FROM BillInfo WHERE IdDrink = " + idDrink.ToString();
+
+            DataTable dataBillInfo = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in dataBillInfo.Rows)
+            {
+                long billId = (long)item[0];
+
+                listBillId.Add(billId);
+            }
+
+            return listBillId;
+        }
+
+        public bool DeleteBill(long idBill) // Unit Test
+        {
+            long billCount = 0;
+
+            List<Bill> listBill = LoadListBill();
+
+            foreach (Bill item in listBill)
+            {
+                if (item.Id == idBill)
+                {
+                    billCount++;
+
+                    break;
+                }
+            }
+
+            if (billCount > 0)
+            {
+                string query = "DELETE FROM Bill WHERE Id = " + idBill.ToString();
+
+                DataProvider.Instance.ExecuteNonQuery(query);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
     }
 }

@@ -123,55 +123,6 @@ namespace Cafe
                     return check;
                 }
             }
-        } // Unit Test
-
-        public void ShowAccountIfRight(long check, Form oldForm, TextBox txtUserName, TextBox txtPassWord)
-        {
-            if (check == 1)
-            {
-                Form1 f = new Form1("Admin");
-
-                oldForm.Hide();
-                f.ShowDialog();
-            }
-            else if (check == 0)
-            {
-                Form1 f = new Form1("Staff");
-
-                oldForm.Hide();
-                f.ShowDialog();
-            }
-            else if (check == -1)
-            {
-                MessageBox.Show("Bạn chưa nhập username và password", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                txtUserName.Clear();
-                txtPassWord.Clear();
-
-                txtUserName.Focus();
-            }
-            else if (check == -2)
-            {
-                MessageBox.Show("Bạn chưa nhập username", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                txtUserName.Clear();
-
-                txtUserName.Focus();
-            }
-            else if (check == -3)
-            {
-                MessageBox.Show("Bạn chưa nhập password", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                txtPassWord.Clear();
-
-                txtPassWord.Focus();
-            }
-            else if (check == -4)
-            {
-                MessageBox.Show("Bạn nhập sai username hoặc password", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                txtUserName.Focus();
-            }
         }
         #endregion
     }

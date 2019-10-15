@@ -74,6 +74,141 @@ namespace Cafe
                 return id;
             }
         }
+
+        public Category GetCategory_By_Name(string categoryName)
+        {
+            Category category = null;
+
+            string query = "SELECT * from Category WHERE Name = '" + categoryName.ToString() + "'";
+
+            DataTable dataCategory = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in dataCategory.Rows)
+            {
+                category = new Category(item);
+
+                return category;
+            }
+
+            return category;
+        }
+
+        public void LoadCategory_By_Datagridview(string nameCategory, ComboBox cbCategory)
+        {
+            Category category = GetCategory_By_Name(nameCategory);
+
+            int index = -1;
+            int i = 0;
+
+            foreach (Category item in cbCategory.Items)
+            {
+                if (category != null)
+                {
+                    if (item.Name == category.Name)
+                    {
+                        index = i;
+
+                        break;
+                    }
+                    i++;
+                }
+                else
+                    cbCategory.Text = "";
+            }
+
+            cbCategory.SelectedIndex = index;
+        }
+
+        public DataTable LoadCategory_To_Datagridview()
+        {
+            string query = "SELECT Id, Name as [Tên] FROM Category";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            return data;
+        }
+
+        public void Binding_Category(TextBox txtName, DataGridView dgvDrink)
+        {
+            txtName.DataBindings.Add(new Binding("Text", dgvDrink.DataSource, "Tên", true, DataSourceUpdateMode.Never));
+        }
+
+        public bool InsertCategory(string name) // Unit Test
+        {
+            long id = GetMaxCategoryID() + 1;
+
+            string query = "INSERT INTO Category(Id,Name) VALUES(" + id.ToString() + "," + "'" + name + "'" + ")";
+
+            long result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            if (result > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public bool UpdateCategory(long id, string name) // Unit Test
+        {
+            string query = "UPDATE Category SET Name = " + "'" + name + "' WHERE Id = " + id.ToString();
+
+            long result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            if (result > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public bool DeleteCategory(long idCategory) // Unit Test
+        {
+            long categoryCount = 0;
+
+            List<Category> listCategory = GetListCategory();
+
+            foreach (Category item in listCategory)
+            {
+                if (item.Id == idCategory)
+                {
+                    categoryCount++;
+
+                    break;
+                }
+            }
+
+            if (categoryCount > 0)
+            {
+                List<Drink> drinkList = DrinkProvider.Instance.GetDrink_ByCategoryId(idCategory);
+
+                foreach (Drink item in drinkList)
+                {
+                    DrinkProvider.Instance.DeleteDrink(item.Id);
+                }
+
+                string query = "DELETE FROM Category WHERE Id = " + idCategory.ToString();
+
+                DataProvider.Instance.ExecuteNonQuery(query);
+
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public long GetMaxCategoryID()
+        {
+            string query = "SELECT max(id) FROM Category";
+
+            try
+            {
+                long maxId = (long)DataProvider.Instance.ExecuteScalar(query);
+
+                return maxId;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
         #endregion
     }
 

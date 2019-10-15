@@ -11,8 +11,8 @@ namespace Cafe
 {
     public partial class Form1 : Form
     {
-        private static List<Button> buttonList = new List<Button>();
-        private static List<Table> listTable = new List<Table>();
+        public static List<Button> buttonList = new List<Button>();
+        public static List<Table> listTable = new List<Table>();
 
         private string _message;
 
@@ -21,6 +21,8 @@ namespace Cafe
             InitializeComponent();
 
             LoadTable();
+
+            TableProvider.Instance.LoadListTable(cbTable, listTable);
 
             CategoryProvider.Instance.LoadCategory(cbCategory);
         }
@@ -31,14 +33,7 @@ namespace Cafe
             _message = message;
             txtInfo.Text = _message;
 
-            if(_message == "Admin")
-            {
-                btnQLThucUong.Enabled = true;
-            }
-            else if(_message == "Staff")
-            {
-                btnQLThucUong.Enabled = false;
-            }
+            Admin(_message);
         }
         #endregion
 
@@ -55,6 +50,11 @@ namespace Cafe
                 {
                     TableProvider.Instance.UpdateTableStatus_0(item.Id);
                 }
+                else
+                {
+                    TableProvider.Instance.UpdateTableStatus_1(item.Id);
+                }
+
             }
 
             listTable = TableProvider.Instance.GetTableList();
@@ -65,6 +65,17 @@ namespace Cafe
             {
                 item.Click += item_Click;
             }
+        }
+
+        private void btnChangeTable_Click(object sender, EventArgs e)
+        {
+            long idTableOld = (lvBill.Tag as Table).Id;
+
+            long idTableNew = (cbTable.SelectedItem as Table).Id;
+
+            TableProvider.Instance.SwitchTable(idTableOld, idTableNew);
+
+            LoadTable();
         }
         #endregion
 
@@ -120,7 +131,9 @@ namespace Cafe
 
             if (idBill != -1)
             {
-                BillProvider.Instance.UpdateStatusBill(idBill);
+                long totalPrice = Convert.ToInt64(txtTongTien.Text);
+
+                BillProvider.Instance.UpdateStatusBill(idBill, totalPrice);
 
                 TableProvider.Instance.UpdateTableStatus_0(table.Id);
 
@@ -139,6 +152,128 @@ namespace Cafe
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+        #endregion
+
+        private void Admin(string message)
+        {
+            if (message == "Admin")
+            {
+                btnThongKe.Enabled = true;
+                btnQLDrink.Enabled = true;
+                btnQLCategory.Enabled = true;
+            }
+            else if (message == "Staff")
+            {
+                btnThongKe.Enabled = false;
+                btnQLDrink.Enabled = false;
+                btnQLCategory.Enabled = false;
+            }
+        }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            ThongKeForm thongkeForm = new ThongKeForm();
+            this.Hide();
+            thongkeForm.ShowDialog();
+            this.Show();
+        }
+
+        #region QL Drink
+        private void btnQLDrink_Click(object sender, EventArgs e)
+        {
+            QLThucUongForm qlDrinkForm = new QLThucUongForm();
+            this.Hide();
+            qlDrinkForm.DeleteDrink += qlDrinkForm_DeleteDrink;
+            qlDrinkForm.UpdateDrink += qlDrinkForm_UpdateDrink;
+            qlDrinkForm.CreateDrink += qlDrinkForm_CreateDrink;
+            qlDrinkForm.ShowDialog();
+            this.Show();
+        }
+
+        void qlDrinkForm_CreateDrink(object sender, EventArgs e)
+        {
+            LoadTable();
+
+            TableProvider.Instance.LoadListTable(cbTable, listTable);
+
+            CategoryProvider.Instance.LoadCategory(cbCategory);
+
+            if (lvBill.Tag != null)
+                MenuProvider.Instance.ShowMenu((lvBill.Tag as Table).Id, lvBill, txtTongTien);
+        }
+
+        void qlDrinkForm_UpdateDrink(object sender, EventArgs e)
+        {
+            LoadTable();
+
+            TableProvider.Instance.LoadListTable(cbTable, listTable);
+
+            CategoryProvider.Instance.LoadCategory(cbCategory);
+
+            if (lvBill.Tag != null)
+                MenuProvider.Instance.ShowMenu((lvBill.Tag as Table).Id, lvBill, txtTongTien);
+        }
+
+        void qlDrinkForm_DeleteDrink(object sender, EventArgs e)
+        {
+            LoadTable();
+
+            TableProvider.Instance.LoadListTable(cbTable, listTable);
+
+            CategoryProvider.Instance.LoadCategory(cbCategory);
+
+            if (lvBill.Tag != null)
+                MenuProvider.Instance.ShowMenu((lvBill.Tag as Table).Id, lvBill, txtTongTien);
+        }
+        #endregion
+
+        #region QL Category
+        private void btnQLCategory_Click(object sender, EventArgs e)
+        {
+            QLCategoryForm qlCategoryForm = new QLCategoryForm();
+            this.Hide();
+            qlCategoryForm.DeleteCategory += qlCategoryForm_DeleteCategory;
+            qlCategoryForm.UpdateCategory += qlCategoryForm_UpdateCategory;
+            qlCategoryForm.CreateCategory += qlCategoryForm_CreateCategory;
+            qlCategoryForm.ShowDialog();
+            this.Show();
+        }
+
+        void qlCategoryForm_CreateCategory(object sender, EventArgs e)
+        {
+            LoadTable();
+
+            TableProvider.Instance.LoadListTable(cbTable, listTable);
+
+            CategoryProvider.Instance.LoadCategory(cbCategory);
+
+            if (lvBill.Tag != null)
+                MenuProvider.Instance.ShowMenu((lvBill.Tag as Table).Id, lvBill, txtTongTien);
+        }
+
+        void qlCategoryForm_UpdateCategory(object sender, EventArgs e)
+        {
+            LoadTable();
+
+            TableProvider.Instance.LoadListTable(cbTable, listTable);
+
+            CategoryProvider.Instance.LoadCategory(cbCategory);
+
+            if (lvBill.Tag != null)
+                MenuProvider.Instance.ShowMenu((lvBill.Tag as Table).Id, lvBill, txtTongTien);
+        }
+
+        void qlCategoryForm_DeleteCategory(object sender, EventArgs e)
+        {
+            LoadTable();
+
+            TableProvider.Instance.LoadListTable(cbTable, listTable);
+
+            CategoryProvider.Instance.LoadCategory(cbCategory);
+
+            if (lvBill.Tag != null)
+                MenuProvider.Instance.ShowMenu((lvBill.Tag as Table).Id, lvBill, txtTongTien);
         }
         #endregion
     }

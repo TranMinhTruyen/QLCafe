@@ -17,20 +17,44 @@ namespace Cafe
             set { id = value; }
         }
 
-        private string dateCheckIn;
+        private string day;
 
-        public string DateCheckIn
+        public string Day
         {
-            get { return dateCheckIn; }
-            set { dateCheckIn = value; }
+            get { return day; }
+            set { day = value; }
         }
 
-        private string dateCheckOut;
+        private string month;
 
-        public string DateCheckOut
+        public string Month
         {
-            get { return dateCheckOut; }
-            set { dateCheckOut = value; }
+            get { return month; }
+            set { month = value; }
+        }
+
+        private string year;
+
+        public string Year
+        {
+            get { return year; }
+            set { year = value; }
+        }
+
+        private string timeCheckIn;
+
+        public string TimeCheckIn
+        {
+            get { return timeCheckIn; }
+            set { timeCheckIn = value; }
+        }
+
+        private string timeCheckOut;
+
+        public string TimeCheckOut
+        {
+            get { return timeCheckOut; }
+            set { timeCheckOut = value; }
         }
 
         private long idTable;
@@ -49,22 +73,38 @@ namespace Cafe
             set { status = value; }
         }
 
-        public Bill(long id, string dateCheckIn, string dateCheckOut, long idTable, long status)
+        private long totalPrice;
+
+        public long TotalPrice
+        {
+            get { return totalPrice; }
+            set { totalPrice = value; }
+        }
+
+        public Bill(long id, string day, string month, string year, string timeCheckIn, string timeCheckOut, long idTable, long status, long totalPrice)
         {
             this.Id = id;
-            this.DateCheckIn = dateCheckIn;
-            this.DateCheckOut = dateCheckOut;
+            this.Day = day;
+            this.Month = month;
+            this.Year = year;
+            this.TimeCheckIn = timeCheckIn;
+            this.TimeCheckOut = timeCheckOut;
             this.IdTable = idTable;
             this.Status = status;
+            this.TotalPrice = totalPrice;
         }
 
         public Bill(DataRow row)
         {
             this.Id = (long)row["Id"];
-            this.DateCheckIn = row["DateCheckIn"].ToString();
-            this.DateCheckOut = row["DateCheckOut"].ToString();
+            this.Day = row["Day"].ToString();
+            this.Month = row["Month"].ToString();
+            this.Year = row["Year"].ToString();
+            this.TimeCheckIn = row["TimeCheckIn"].ToString();
+            this.TimeCheckOut = row["TimeCheckOut"].ToString();
             this.IdTable = (long)row["IdTable"];
             this.Status = (long)row["Status"];
+            this.TotalPrice = (long)row["TotalPrice"];
         }
     }
 }
