@@ -58,12 +58,20 @@
     <Compile Include="QLCategoryForm.Designer.cs">
       <DependentUpon>QLCategoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="QLTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QLTable.Designer.cs">
+      <DependentUpon>QLTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="QLThucUongForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="QLThucUongForm.Designer.cs">
       <DependentUpon>QLThucUongForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report.cs" />
+    <Compile Include="ReportProvider.cs" />
     <Compile Include="ThongKeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +107,9 @@
     <Compile Include="TableProvider.cs" />
     <EmbeddedResource Include="QLCategoryForm.resx">
       <DependentUpon>QLCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QLTable.resx">
+      <DependentUpon>QLTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QLThucUongForm.resx">
       <DependentUpon>QLThucUongForm.cs</DependentUpon>

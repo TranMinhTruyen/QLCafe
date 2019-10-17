@@ -46,20 +46,7 @@ namespace Cafe
             return listCategory;
         }
 
-        public void LoadCategory(ComboBox cbCategory)
-        {
-            List<Category> listCategory = GetListCategory();
-
-            if (listCategory.Count != 0)
-            {
-                cbCategory.DataSource = listCategory;
-                cbCategory.DisplayMember = "Name";
-            }
-            else
-                cbCategory.Text = "Chưa có danh sách loại thức uống";
-        }
-
-        public long GetCategoryId(ComboBox cbCategory , object sender)
+        public long GetCategoryId(ComboBox cbCategory, object sender)
         {
             cbCategory = sender as ComboBox;
 
@@ -93,44 +80,33 @@ namespace Cafe
             return category;
         }
 
-        public void LoadCategory_By_Datagridview(string nameCategory, ComboBox cbCategory)
+        public long GetMaxCategoryID()
         {
-            Category category = GetCategory_By_Name(nameCategory);
+            string query = "SELECT max(id) FROM Category";
 
-            int index = -1;
-            int i = 0;
-
-            foreach (Category item in cbCategory.Items)
+            try
             {
-                if (category != null)
-                {
-                    if (item.Name == category.Name)
-                    {
-                        index = i;
+                long maxId = (long)DataProvider.Instance.ExecuteScalar(query);
 
-                        break;
-                    }
-                    i++;
-                }
-                else
-                    cbCategory.Text = "";
+                return maxId;
             }
-
-            cbCategory.SelectedIndex = index;
+            catch
+            {
+                return 0;
+            }
         }
 
-        public DataTable LoadCategory_To_Datagridview()
+        public void LoadCategory(ComboBox cbCategory)
         {
-            string query = "SELECT Id, Name as [Tên] FROM Category";
+            List<Category> listCategory = GetListCategory();
 
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
-
-            return data;
-        }
-
-        public void Binding_Category(TextBox txtName, DataGridView dgvDrink)
-        {
-            txtName.DataBindings.Add(new Binding("Text", dgvDrink.DataSource, "Tên", true, DataSourceUpdateMode.Never));
+            if (listCategory.Count != 0)
+            {
+                cbCategory.DataSource = listCategory;
+                cbCategory.DisplayMember = "Name";
+            }
+            else
+                cbCategory.Text = "Chưa có danh sách loại thức uống";
         }
 
         public bool InsertCategory(string name) // Unit Test
@@ -194,20 +170,44 @@ namespace Cafe
                 return false;
         }
 
-        public long GetMaxCategoryID()
+        public void LoadCategory_By_Datagridview(string nameCategory, ComboBox cbCategory)
         {
-            string query = "SELECT max(id) FROM Category";
+            Category category = GetCategory_By_Name(nameCategory);
 
-            try
-            {
-                long maxId = (long)DataProvider.Instance.ExecuteScalar(query);
+            int index = -1;
+            int i = 0;
 
-                return maxId;
-            }
-            catch
+            foreach (Category item in cbCategory.Items)
             {
-                return 0;
+                if (category != null)
+                {
+                    if (item.Name == category.Name)
+                    {
+                        index = i;
+
+                        break;
+                    }
+                    i++;
+                }
+                else
+                    cbCategory.Text = "";
             }
+
+            cbCategory.SelectedIndex = index;
+        }
+
+        public DataTable LoadCategory_To_Datagridview()
+        {
+            string query = "SELECT Id, Name as [Tên] FROM Category";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            return data;
+        }
+
+        public void Binding_Category(TextBox txtName, DataGridView dgvDrink)
+        {
+            txtName.DataBindings.Add(new Binding("Text", dgvDrink.DataSource, "Tên", true, DataSourceUpdateMode.Never));
         }
         #endregion
     }

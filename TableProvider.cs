@@ -47,6 +47,40 @@ namespace Cafe
             return listTable;
         }
 
+        public Table GetTable_By_Id(long idTable) // Unit Test
+        {
+            try
+            {
+                string query = "SELECT * FROM TableDrink WHERE Id =" + idTable.ToString();
+
+                DataTable dataTable = DataProvider.Instance.ExecuteQuery(query);
+
+                Table table = new Table(dataTable.Rows[0]);
+
+                return table;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public long GetMaxTableID()
+        {
+            string query = "SELECT max(id) FROM TableDrink";
+
+            try
+            {
+                long maxId = (long)DataProvider.Instance.ExecuteScalar(query);
+
+                return maxId;
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
         public void CreateTableList(FlowLayoutPanel flowPanel, List<Button> buttonList, List<Table> tableList)
         {
             flowPanel.Controls.Clear();
@@ -78,16 +112,30 @@ namespace Cafe
             }
         }
 
-        public void TableChange(List<Button> buttonList, object sender)
+        public bool InsertTable(string name) // Unit Test
         {
-            foreach (Button item in buttonList)
-            {
-                item.BackColor = SystemColors.ControlLight;
-            }
+            long id = GetMaxTableID() + 1;
 
-            Button btn = (Button)sender;
+            string query = "INSERT INTO TableDrink(Id,Name) VALUES(" + id.ToString() + "," + "'" + name + "'" + ")";
 
-            btn.BackColor = Color.Red;
+            long result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            if (result > 0)
+                return true;
+            else
+                return false;
+        }
+
+        public bool UpdateTable(long idTable, string name) // Unit Test
+        {
+            string query = "UPDATE TableDrink SET Name = " + "'" + name + "' WHERE Id = " + idTable.ToString();
+
+            long result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            if (result > 0)
+                return true;
+            else
+                return false;
         }
 
         public bool UpdateTableStatus_1(long idTable) // Unit Test
@@ -146,10 +194,52 @@ namespace Cafe
                 return false;
         }
 
+        public bool DeleteTable(long idTable) // Unit Test
+        {
+            long tableCount = 0;
+
+            List<Table> listTable = GetTableList();
+
+            foreach (Table item in listTable)
+            {
+                if (item.Id == idTable)
+                {
+                    tableCount++;
+
+                    break;
+                }
+            }
+
+            if (tableCount > 0)
+            {
+                BillProvider.Instance.DeleteBill_By_IdTable(idTable);
+
+                string query = "DELETE FROM TableDrink WHERE Id = " + idTable.ToString();
+
+                DataProvider.Instance.ExecuteNonQuery(query);
+
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public void TableChange(List<Button> buttonList, object sender)
+        {
+            foreach (Button item in buttonList)
+            {
+                item.BackColor = SystemColors.ControlLight;
+            }
+
+            Button btn = (Button)sender;
+
+            btn.BackColor = Color.Red;
+        }
+
         public bool SwitchTable(long idTableOld, long idTableNew) // Unit Test
         {
-            long idBillOld = BillProvider.Instance.GetBillId_ByTableId(idTableOld);
-            long idBillNew = BillProvider.Instance.GetBillId_ByTableId(idTableNew);
+            long idBillOld = BillProvider.Instance.GetBillId_By_TableId(idTableOld);
+            long idBillNew = BillProvider.Instance.GetBillId_By_TableId(idTableNew);
 
             long tableOldCount = 0;
             long tableNewCount = 0;
@@ -203,6 +293,20 @@ namespace Cafe
             {
                 cbTable.Text = "None";
             }
+        }
+
+        public DataTable LoadTable_To_Datagridview()
+        {
+            string query = "SELECT Id, Name as [Tên] FROM TableDrink";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            return data;
+        }
+
+        public void Binding_Table(TextBox txtName, DataGridView dgvTable)
+        {
+            txtName.DataBindings.Add(new Binding("Text", dgvTable.DataSource, "Tên", true, DataSourceUpdateMode.Never));
         }
         #endregion
     }

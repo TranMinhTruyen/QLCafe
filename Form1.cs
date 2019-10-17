@@ -44,7 +44,7 @@ namespace Cafe
 
             foreach (Table item in listTable)
             {
-                long idTable = BillProvider.Instance.GetBillId_ByTableId(item.Id);
+                long idTable = BillProvider.Instance.GetBillId_By_TableId(item.Id);
 
                 if (idTable == -1)
                 {
@@ -127,7 +127,7 @@ namespace Cafe
         {
             Table table = lvBill.Tag as Table;
 
-            long idBill = BillProvider.Instance.GetBillId_ByTableId(table.Id);
+            long idBill = BillProvider.Instance.GetBillId_By_TableId(table.Id);
 
             if (idBill != -1)
             {
@@ -136,6 +136,8 @@ namespace Cafe
                 BillProvider.Instance.UpdateStatusBill(idBill, totalPrice);
 
                 TableProvider.Instance.UpdateTableStatus_0(table.Id);
+
+                ReportProvider.Instance.InsertReport(table.Id, idBill);
 
                 LoadTable();
 
@@ -162,12 +164,14 @@ namespace Cafe
                 btnThongKe.Enabled = true;
                 btnQLDrink.Enabled = true;
                 btnQLCategory.Enabled = true;
+                btnQLTable.Enabled = true;
             }
             else if (message == "Staff")
             {
                 btnThongKe.Enabled = false;
                 btnQLDrink.Enabled = false;
                 btnQLCategory.Enabled = false;
+                btnQLTable.Enabled = false;
             }
         }
 
@@ -265,6 +269,55 @@ namespace Cafe
         }
 
         void qlCategoryForm_DeleteCategory(object sender, EventArgs e)
+        {
+            LoadTable();
+
+            TableProvider.Instance.LoadListTable(cbTable, listTable);
+
+            CategoryProvider.Instance.LoadCategory(cbCategory);
+
+            if (lvBill.Tag != null)
+                MenuProvider.Instance.ShowMenu((lvBill.Tag as Table).Id, lvBill, txtTongTien);
+        }
+        #endregion
+
+        #region QL Table
+        private void btnQLTable_Click(object sender, EventArgs e)
+        {
+            QLTable qlTable = new QLTable();
+            this.Hide();
+            qlTable.CreateTable += qlTable_CreateTable;
+            qlTable.UpdateTable += qlTable_UpdateTable;
+            qlTable.DeleteTable += qlTable_DeleteTable;
+            qlTable.ShowDialog();
+            this.Show();
+        }
+
+        void qlTable_DeleteTable(object sender, EventArgs e)
+        {
+            LoadTable();
+
+            TableProvider.Instance.LoadListTable(cbTable, listTable);
+
+            CategoryProvider.Instance.LoadCategory(cbCategory);
+
+            if (lvBill.Tag != null)
+                MenuProvider.Instance.ShowMenu((lvBill.Tag as Table).Id, lvBill, txtTongTien);
+        }
+
+        void qlTable_UpdateTable(object sender, EventArgs e)
+        {
+            LoadTable();
+
+            TableProvider.Instance.LoadListTable(cbTable, listTable);
+
+            CategoryProvider.Instance.LoadCategory(cbCategory);
+
+            if (lvBill.Tag != null)
+                MenuProvider.Instance.ShowMenu((lvBill.Tag as Table).Id, lvBill, txtTongTien);
+        }
+
+        void qlTable_CreateTable(object sender, EventArgs e)
         {
             LoadTable();
 

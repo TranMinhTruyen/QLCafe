@@ -61,7 +61,7 @@ namespace Cafe
                 cbDrink.Text = "Chưa có danh sách thức uống";
         }
 
-        public List<Drink> LoadListDrink()
+        public List<Drink> GetListDrink()
         {
             string query = "SELECT * FROM Drink";
 
@@ -77,21 +77,6 @@ namespace Cafe
             }
 
             return listDrink;
-        }
-
-        public DataTable LoadNamePriceDrink_By_Category()
-        {
-            string query = "SELECT Drink.Id, Drink.Name as [Tên], Drink.Price as [Giá], Category.Name as [Loại] FROM Drink, Category where Drink.IdCategory = Category.Id";
-
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
-
-            return data;
-        }
-
-        public void Binding_NamePriceDrink(TextBox txtName, NumericUpDown nudPrice, DataGridView dgvDrink)
-        {
-            txtName.DataBindings.Add(new Binding("Text", dgvDrink.DataSource, "Tên", true, DataSourceUpdateMode.Never));
-            nudPrice.DataBindings.Add(new Binding("Value", dgvDrink.DataSource, "Giá", true, DataSourceUpdateMode.Never));
         }
 
         public long GetMaxDrinkId()
@@ -140,7 +125,7 @@ namespace Cafe
         {
             long drinkCount = 0;
 
-            List<Drink> listDrink = LoadListDrink();
+            List<Drink> listDrink = GetListDrink();
 
             foreach (Drink item in listDrink)
             {
@@ -164,6 +149,21 @@ namespace Cafe
             }
             else
                 return false;
+        }
+
+        public DataTable LoadNamePriceDrink_By_Category()
+        {
+            string query = "SELECT Drink.Id, Drink.Name as [Tên], Drink.Price as [Giá], Category.Name as [Loại] FROM Drink, Category where Drink.IdCategory = Category.Id";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            return data;
+        }
+
+        public void Binding_NamePriceDrink(TextBox txtName, NumericUpDown nudPrice, DataGridView dgvDrink)
+        {
+            txtName.DataBindings.Add(new Binding("Text", dgvDrink.DataSource, "Tên", true, DataSourceUpdateMode.Never));
+            nudPrice.DataBindings.Add(new Binding("Value", dgvDrink.DataSource, "Giá", true, DataSourceUpdateMode.Never));
         }
         #endregion
     }

@@ -16,12 +16,12 @@ namespace Cafe
         {
             InitializeComponent();
 
-            BillProvider.Instance.LoadPaidBill(dgvThongKe, dtpThongKe);
+            ReportProvider.Instance.LoadPaidBill(dgvThongKe, dtpThongKe);
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            BillProvider.Instance.LoadPaidBill(dgvThongKe, dtpThongKe);
+            ReportProvider.Instance.LoadPaidBill(dgvThongKe, dtpThongKe);
         }
     }
 }

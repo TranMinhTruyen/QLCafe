@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnQLTable = new System.Windows.Forms.Button();
+            this.btnQLCategory = new System.Windows.Forms.Button();
             this.btnQLDrink = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
             this.txtInfo = new System.Windows.Forms.Label();
@@ -50,7 +52,6 @@
             this.flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.cbTable = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnQLCategory = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +60,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnQLTable);
             this.panel1.Controls.Add(this.btnQLCategory);
             this.panel1.Controls.Add(this.btnQLDrink);
             this.panel1.Controls.Add(this.btnThongKe);
@@ -70,6 +72,32 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1142, 98);
             this.panel1.TabIndex = 2;
+            // 
+            // btnQLTable
+            // 
+            this.btnQLTable.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLTable.Location = new System.Drawing.Point(652, 5);
+            this.btnQLTable.Margin = new System.Windows.Forms.Padding(4);
+            this.btnQLTable.Name = "btnQLTable";
+            this.btnQLTable.Size = new System.Drawing.Size(156, 80);
+            this.btnQLTable.TabIndex = 0;
+            this.btnQLTable.Text = "Quản lý bàn";
+            this.btnQLTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQLTable.UseVisualStyleBackColor = true;
+            this.btnQLTable.Click += new System.EventHandler(this.btnQLTable_Click);
+            // 
+            // btnQLCategory
+            // 
+            this.btnQLCategory.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLCategory.Location = new System.Drawing.Point(488, 5);
+            this.btnQLCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.btnQLCategory.Name = "btnQLCategory";
+            this.btnQLCategory.Size = new System.Drawing.Size(156, 80);
+            this.btnQLCategory.TabIndex = 0;
+            this.btnQLCategory.Text = "Quản lý loại thức uống";
+            this.btnQLCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQLCategory.UseVisualStyleBackColor = true;
+            this.btnQLCategory.Click += new System.EventHandler(this.btnQLCategory_Click);
             // 
             // btnQLDrink
             // 
@@ -111,7 +139,6 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Image = global::Cafe.Properties.Resources.icon_6_2939d091842__1_;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label1.Location = new System.Drawing.Point(9, 22);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -289,19 +316,6 @@
             this.label2.Text = "Bàn muốn chuyển sang:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // btnQLCategory
-            // 
-            this.btnQLCategory.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQLCategory.Location = new System.Drawing.Point(488, 5);
-            this.btnQLCategory.Margin = new System.Windows.Forms.Padding(4);
-            this.btnQLCategory.Name = "btnQLCategory";
-            this.btnQLCategory.Size = new System.Drawing.Size(156, 80);
-            this.btnQLCategory.TabIndex = 0;
-            this.btnQLCategory.Text = "Quản lý loại thức uống";
-            this.btnQLCategory.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnQLCategory.UseVisualStyleBackColor = true;
-            this.btnQLCategory.Click += new System.EventHandler(this.btnQLCategory_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -355,6 +369,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnQLDrink;
         private System.Windows.Forms.Button btnQLCategory;
+        private System.Windows.Forms.Button btnQLTable;
     }
 }
 
