@@ -8,7 +8,7 @@
     <owners>SQLite Development Team</owners>
     <licenseUrl>https://www.sqlite.org/copyright.html</licenseUrl>
     <projectUrl>https://system.data.sqlite.org/</projectUrl>
-    <iconUrl>https://system.data.sqlite.org/images/sqlite128.png</iconUrl>
+    <iconUrl>https://api.nuget.org/v3-flatcontainer/system.data.sqlite.core/1.0.111/icon</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The official SQLite database engine for both x86 and x64 along with the ADO.NET provider.</description>
     <summary />

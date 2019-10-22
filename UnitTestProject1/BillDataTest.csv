@@ -1,0 +1,3 @@
+﻿IdBill, IdTable, IdDrink, ExpectedIdBill, ExpectedListBill, ExpectedBool
+"0", "0", "0", "-1", "0", "false"
+"1", "6", "10", "1","1", "true"
