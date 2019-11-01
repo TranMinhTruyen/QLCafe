@@ -52,7 +52,7 @@ namespace Cafe
             if (txtName.Text == "")
                 name = "Bàn chưa đặt tên";
             else
-                name = txtName.Text;
+                name = lblban.Text + txtName.Text;
 
             if (TableProvider.Instance.InsertTable(name) == true)
             {
@@ -86,7 +86,7 @@ namespace Cafe
                     updateTable(this, new EventArgs());
             }
             else
-                MessageBox.Show("Sửa loại thức uống không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sửa bàn không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #region Event Create

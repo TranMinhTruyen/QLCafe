@@ -32,17 +32,21 @@
             this.btnChange = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblban = new System.Windows.Forms.Label();
             this.dgvTable = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnDelete
             // 
-            this.btnDelete.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(426, 144);
+            this.btnDelete.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(113, 179);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(131, 60);
+            this.btnDelete.Size = new System.Drawing.Size(166, 49);
             this.btnDelete.TabIndex = 18;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -50,10 +54,11 @@
             // 
             // btnChange
             // 
-            this.btnChange.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChange.Location = new System.Drawing.Point(577, 63);
+            this.btnChange.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChange.Location = new System.Drawing.Point(113, 119);
+            this.btnChange.Margin = new System.Windows.Forms.Padding(2);
             this.btnChange.Name = "btnChange";
-            this.btnChange.Size = new System.Drawing.Size(131, 60);
+            this.btnChange.Size = new System.Drawing.Size(166, 49);
             this.btnChange.TabIndex = 19;
             this.btnChange.Text = "Sửa";
             this.btnChange.UseVisualStyleBackColor = true;
@@ -61,10 +66,11 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(426, 63);
+            this.btnAdd.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(113, 59);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(131, 60);
+            this.btnAdd.Size = new System.Drawing.Size(166, 49);
             this.btnAdd.TabIndex = 20;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -73,44 +79,70 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(485, 12);
+            this.txtName.Location = new System.Drawing.Point(113, 7);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(220, 34);
+            this.txtName.Size = new System.Drawing.Size(166, 29);
             this.txtName.TabIndex = 17;
+            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label1
+            // lblban
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(421, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 27);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Tên:";
+            this.lblban.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblban.Location = new System.Drawing.Point(20, 7);
+            this.lblban.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblban.Name = "lblban";
+            this.lblban.Size = new System.Drawing.Size(89, 29);
+            this.lblban.TabIndex = 16;
+            this.lblban.Text = "Bàn số ";
+            this.lblban.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // dgvTable
             // 
             this.dgvTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTable.Location = new System.Drawing.Point(12, 12);
+            this.dgvTable.Location = new System.Drawing.Point(0, 69);
+            this.dgvTable.Margin = new System.Windows.Forms.Padding(2);
             this.dgvTable.Name = "dgvTable";
             this.dgvTable.RowTemplate.Height = 24;
-            this.dgvTable.Size = new System.Drawing.Size(393, 192);
+            this.dgvTable.Size = new System.Drawing.Size(309, 334);
             this.dgvTable.TabIndex = 15;
             this.dgvTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTable_CellClick);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblban);
+            this.panel1.Controls.Add(this.btnDelete);
+            this.panel1.Controls.Add(this.txtName);
+            this.panel1.Controls.Add(this.btnChange);
+            this.panel1.Controls.Add(this.btnAdd);
+            this.panel1.Location = new System.Drawing.Point(309, 69);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(290, 334);
+            this.panel1.TabIndex = 21;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(599, 65);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "QUẢN LÝ BÀN";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // QLTable
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 221);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnChange);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtName);
+            this.ClientSize = new System.Drawing.Size(599, 403);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvTable);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "QLTable";
@@ -118,8 +150,9 @@
             this.Text = "QLTable";
             this.Load += new System.EventHandler(this.QLTable_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTable)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -129,7 +162,9 @@
         private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblban;
         private System.Windows.Forms.DataGridView dgvTable;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label1;
     }
 }

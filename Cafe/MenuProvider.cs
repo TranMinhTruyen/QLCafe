@@ -58,7 +58,7 @@ namespace Cafe
             {
                 ListViewItem lvItem = new ListViewItem();
 
-                lvItem.SubItems.Add(item.Name.ToString());
+                lvItem.SubItems[0].Text = item.Name.ToString();
                 lvItem.SubItems.Add(item.CountDrink.ToString());
                 lvItem.SubItems.Add(item.Price.ToString());
                 lvItem.SubItems.Add(item.TotalPrice.ToString());

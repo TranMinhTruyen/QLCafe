@@ -63,6 +63,8 @@ namespace Cafe
 
             foreach (Button item in buttonList)
             {
+                item.BackColor = Color.White;
+                item.ForeColor = Color.Black;
                 item.Click += item_Click;
             }
         }
@@ -150,7 +152,6 @@ namespace Cafe
         #region Exit
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
         }
         #endregion
 
@@ -175,7 +176,6 @@ namespace Cafe
         private void btnThongKe_Click(object sender, EventArgs e)
         {
             ThongKeForm thongkeForm = new ThongKeForm();
-            this.Hide();
             thongkeForm.ShowDialog();
             this.Show();
         }
@@ -184,7 +184,6 @@ namespace Cafe
         private void btnQLDrink_Click(object sender, EventArgs e)
         {
             QLThucUongForm qlDrinkForm = new QLThucUongForm();
-            this.Hide();
             qlDrinkForm.DeleteDrink += qlDrinkForm_DeleteDrink;
             qlDrinkForm.UpdateDrink += qlDrinkForm_UpdateDrink;
             qlDrinkForm.CreateDrink += qlDrinkForm_CreateDrink;
@@ -230,10 +229,9 @@ namespace Cafe
         #endregion
 
         #region QL Category
-        private void btnQLCategory_Click(object sender, EventArgs e)
+        private void btnQLCategory_Click_1(object sender, EventArgs e)
         {
             QLCategoryForm qlCategoryForm = new QLCategoryForm();
-            this.Hide();
             qlCategoryForm.DeleteCategory += qlCategoryForm_DeleteCategory;
             qlCategoryForm.UpdateCategory += qlCategoryForm_UpdateCategory;
             qlCategoryForm.CreateCategory += qlCategoryForm_CreateCategory;
@@ -282,7 +280,6 @@ namespace Cafe
         private void btnQLTable_Click(object sender, EventArgs e)
         {
             QLTable qlTable = new QLTable();
-            this.Hide();
             qlTable.CreateTable += qlTable_CreateTable;
             qlTable.UpdateTable += qlTable_UpdateTable;
             qlTable.DeleteTable += qlTable_DeleteTable;
@@ -326,5 +323,15 @@ namespace Cafe
                 MenuProvider.Instance.ShowMenu((lvBill.Tag as Table).Id, lvBill, txtTongTien);
         }
         #endregion
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
