@@ -216,7 +216,7 @@
             // 
             // btnThanhToan
             // 
-            this.btnThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnThanhToan.BackColor = System.Drawing.Color.White;
             this.btnThanhToan.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnThanhToan.FlatAppearance.BorderSize = 5;
             this.btnThanhToan.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -235,7 +235,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.btnBillAdd);
             this.panel2.Controls.Add(this.cbDrink);
@@ -249,6 +249,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(498, 504);
             this.panel2.TabIndex = 6;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // btnBillAdd
             // 
@@ -330,7 +331,7 @@
             // 
             // btnChangeTable
             // 
-            this.btnChangeTable.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnChangeTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnChangeTable.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
             this.btnChangeTable.FlatAppearance.BorderSize = 3;
             this.btnChangeTable.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -347,7 +348,7 @@
             // flowPanel
             // 
             this.flowPanel.AutoScroll = true;
-            this.flowPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.flowPanel.BackColor = System.Drawing.SystemColors.Control;
             this.flowPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowPanel.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.flowPanel.Location = new System.Drawing.Point(0, 80);
@@ -379,6 +380,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.cbTable);
             this.panel3.Controls.Add(this.btnChangeTable);
@@ -387,6 +389,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(638, 52);
             this.panel3.TabIndex = 9;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // Form1
             // 
