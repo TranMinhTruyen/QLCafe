@@ -150,8 +150,9 @@ namespace Cafe
         #endregion
 
         #region Exit
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
         {
+
         }
         #endregion
 
@@ -343,5 +344,7 @@ namespace Cafe
         {
 
         }
+
+
     }
 }

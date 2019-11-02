@@ -80,6 +80,7 @@
             // 
             this.btClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btClose.BackgroundImage")));
             this.btClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btClose.FlatAppearance.BorderSize = 0;
             this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btClose.Location = new System.Drawing.Point(1062, 6);
             this.btClose.Name = "btClose";
@@ -247,7 +248,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(643, 80);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(498, 504);
+            this.panel2.Size = new System.Drawing.Size(498, 506);
             this.panel2.TabIndex = 6;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -260,13 +261,11 @@
             this.btnBillAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBillAdd.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBillAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnBillAdd.Image")));
-            this.btnBillAdd.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnBillAdd.Location = new System.Drawing.Point(353, 2);
+            this.btnBillAdd.Location = new System.Drawing.Point(435, 3);
             this.btnBillAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnBillAdd.Name = "btnBillAdd";
-            this.btnBillAdd.Size = new System.Drawing.Size(139, 57);
+            this.btnBillAdd.Size = new System.Drawing.Size(57, 57);
             this.btnBillAdd.TabIndex = 8;
-            this.btnBillAdd.Text = "Thêm món";
             this.btnBillAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBillAdd.UseVisualStyleBackColor = false;
             this.btnBillAdd.Click += new System.EventHandler(this.btnBillAdd_Click);
@@ -278,7 +277,7 @@
             this.cbDrink.Location = new System.Drawing.Point(2, 32);
             this.cbDrink.Margin = new System.Windows.Forms.Padding(2);
             this.cbDrink.Name = "cbDrink";
-            this.cbDrink.Size = new System.Drawing.Size(347, 27);
+            this.cbDrink.Size = new System.Drawing.Size(429, 27);
             this.cbDrink.TabIndex = 7;
             // 
             // cbCategory
@@ -288,7 +287,7 @@
             this.cbCategory.Location = new System.Drawing.Point(2, 2);
             this.cbCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(347, 27);
+            this.cbCategory.Size = new System.Drawing.Size(429, 27);
             this.cbCategory.TabIndex = 7;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
@@ -337,11 +336,14 @@
             this.btnChangeTable.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnChangeTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangeTable.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangeTable.Location = new System.Drawing.Point(354, 0);
+            this.btnChangeTable.Image = ((System.Drawing.Image)(resources.GetObject("btnChangeTable.Image")));
+            this.btnChangeTable.Location = new System.Drawing.Point(354, 3);
             this.btnChangeTable.Name = "btnChangeTable";
-            this.btnChangeTable.Size = new System.Drawing.Size(142, 48);
+            this.btnChangeTable.Size = new System.Drawing.Size(162, 51);
             this.btnChangeTable.TabIndex = 0;
             this.btnChangeTable.Text = "Chuyển bàn";
+            this.btnChangeTable.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnChangeTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnChangeTable.UseVisualStyleBackColor = false;
             this.btnChangeTable.Click += new System.EventHandler(this.btnChangeTable_Click);
             // 
@@ -361,7 +363,7 @@
             // 
             this.cbTable.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTable.FormattingEnabled = true;
-            this.cbTable.Location = new System.Drawing.Point(207, 10);
+            this.cbTable.Location = new System.Drawing.Point(207, 14);
             this.cbTable.Margin = new System.Windows.Forms.Padding(2);
             this.cbTable.Name = "cbTable";
             this.cbTable.Size = new System.Drawing.Size(142, 30);
@@ -373,7 +375,7 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(202, 48);
+            this.label2.Size = new System.Drawing.Size(202, 57);
             this.label2.TabIndex = 5;
             this.label2.Text = "Bàn muốn chuyển sang:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -387,7 +389,7 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Location = new System.Drawing.Point(0, 523);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(638, 52);
+            this.panel3.Size = new System.Drawing.Size(638, 61);
             this.panel3.TabIndex = 9;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -395,7 +397,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 584);
+            this.ClientSize = new System.Drawing.Size(1141, 586);
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.flowPanel);
@@ -407,8 +409,8 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quản lý cà phê";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Text = "QUẢN LÝ CAFE";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
