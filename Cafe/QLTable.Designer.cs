@@ -45,10 +45,10 @@
             // 
             this.btnDelete.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(113, 119);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDelete.Location = new System.Drawing.Point(151, 146);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(166, 49);
+            this.btnDelete.Size = new System.Drawing.Size(221, 60);
             this.btnDelete.TabIndex = 18;
             this.btnDelete.Text = "Xóa";
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -60,10 +60,10 @@
             // 
             this.btnChange.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChange.Image = ((System.Drawing.Image)(resources.GetObject("btnChange.Image")));
-            this.btnChange.Location = new System.Drawing.Point(113, 179);
-            this.btnChange.Margin = new System.Windows.Forms.Padding(2);
+            this.btnChange.Location = new System.Drawing.Point(151, 220);
+            this.btnChange.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChange.Name = "btnChange";
-            this.btnChange.Size = new System.Drawing.Size(166, 49);
+            this.btnChange.Size = new System.Drawing.Size(221, 60);
             this.btnChange.TabIndex = 19;
             this.btnChange.Text = "Sửa";
             this.btnChange.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -75,10 +75,10 @@
             // 
             this.btnAdd.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(113, 59);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Location = new System.Drawing.Point(151, 73);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(166, 49);
+            this.btnAdd.Size = new System.Drawing.Size(221, 60);
             this.btnAdd.TabIndex = 20;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -89,20 +89,19 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(113, 7);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtName.Location = new System.Drawing.Point(151, 9);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(166, 29);
+            this.txtName.Size = new System.Drawing.Size(220, 29);
             this.txtName.TabIndex = 17;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblban
             // 
             this.lblban.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblban.Location = new System.Drawing.Point(20, 7);
-            this.lblban.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblban.Location = new System.Drawing.Point(27, 9);
             this.lblban.Name = "lblban";
-            this.lblban.Size = new System.Drawing.Size(89, 29);
+            this.lblban.Size = new System.Drawing.Size(119, 36);
             this.lblban.TabIndex = 16;
             this.lblban.Text = "Bàn số ";
             this.lblban.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -111,11 +110,11 @@
             // 
             this.dgvTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTable.Location = new System.Drawing.Point(0, 69);
-            this.dgvTable.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvTable.Location = new System.Drawing.Point(0, 85);
+            this.dgvTable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTable.Name = "dgvTable";
             this.dgvTable.RowTemplate.Height = 24;
-            this.dgvTable.Size = new System.Drawing.Size(309, 334);
+            this.dgvTable.Size = new System.Drawing.Size(412, 411);
             this.dgvTable.TabIndex = 15;
             this.dgvTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTable_CellClick);
             // 
@@ -126,9 +125,10 @@
             this.panel1.Controls.Add(this.txtName);
             this.panel1.Controls.Add(this.btnChange);
             this.panel1.Controls.Add(this.btnAdd);
-            this.panel1.Location = new System.Drawing.Point(309, 69);
+            this.panel1.Location = new System.Drawing.Point(412, 85);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(290, 334);
+            this.panel1.Size = new System.Drawing.Size(387, 411);
             this.panel1.TabIndex = 21;
             // 
             // label1
@@ -137,22 +137,24 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(599, 65);
+            this.label1.Size = new System.Drawing.Size(799, 80);
             this.label1.TabIndex = 22;
             this.label1.Text = "QUẢN LÝ BÀN";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // QLTable
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 403);
+            this.ClientSize = new System.Drawing.Size(799, 496);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvTable);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "QLTable";

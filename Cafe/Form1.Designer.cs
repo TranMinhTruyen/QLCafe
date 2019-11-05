@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btmLogout = new System.Windows.Forms.Button();
+            this.btnQLaccount = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
             this.btnQLCategory = new System.Windows.Forms.Button();
             this.btnQLTable = new System.Windows.Forms.Button();
@@ -63,6 +65,8 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btmLogout);
+            this.panel1.Controls.Add(this.btnQLaccount);
             this.panel1.Controls.Add(this.btClose);
             this.panel1.Controls.Add(this.btnQLCategory);
             this.panel1.Controls.Add(this.btnQLTable);
@@ -73,8 +77,44 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1141, 80);
+            this.panel1.Size = new System.Drawing.Size(1530, 80);
             this.panel1.TabIndex = 2;
+            // 
+            // btmLogout
+            // 
+            this.btmLogout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btmLogout.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btmLogout.FlatAppearance.BorderSize = 3;
+            this.btmLogout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btmLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btmLogout.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btmLogout.Image = ((System.Drawing.Image)(resources.GetObject("btmLogout.Image")));
+            this.btmLogout.Location = new System.Drawing.Point(1230, 6);
+            this.btmLogout.Name = "btmLogout";
+            this.btmLogout.Size = new System.Drawing.Size(190, 65);
+            this.btmLogout.TabIndex = 9;
+            this.btmLogout.Text = "Đăng xuất";
+            this.btmLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btmLogout.UseVisualStyleBackColor = false;
+            this.btmLogout.Click += new System.EventHandler(this.btmLogout_Click);
+            // 
+            // btnQLaccount
+            // 
+            this.btnQLaccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnQLaccount.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnQLaccount.FlatAppearance.BorderSize = 3;
+            this.btnQLaccount.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnQLaccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLaccount.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQLaccount.Image = ((System.Drawing.Image)(resources.GetObject("btnQLaccount.Image")));
+            this.btnQLaccount.Location = new System.Drawing.Point(1034, 6);
+            this.btnQLaccount.Name = "btnQLaccount";
+            this.btnQLaccount.Size = new System.Drawing.Size(190, 65);
+            this.btnQLaccount.TabIndex = 8;
+            this.btnQLaccount.Text = "Quản lý tài khoảng";
+            this.btnQLaccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQLaccount.UseVisualStyleBackColor = false;
+            this.btnQLaccount.Click += new System.EventHandler(this.btnQLaccount_Click);
             // 
             // btClose
             // 
@@ -82,7 +122,7 @@
             this.btClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btClose.FlatAppearance.BorderSize = 0;
             this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btClose.Location = new System.Drawing.Point(1062, 6);
+            this.btClose.Location = new System.Drawing.Point(1458, 6);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(65, 65);
             this.btClose.TabIndex = 7;
@@ -181,6 +221,7 @@
             this.txtInfo.Size = new System.Drawing.Size(243, 76);
             this.txtInfo.TabIndex = 5;
             this.txtInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtInfo.Click += new System.EventHandler(this.txtInfo_Click);
             // 
             // label1
             // 
@@ -246,7 +287,7 @@
             this.panel2.Controls.Add(this.txtTongTien);
             this.panel2.Controls.Add(this.btnThanhToan);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(643, 80);
+            this.panel2.Location = new System.Drawing.Point(1032, 80);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(498, 506);
             this.panel2.TabIndex = 6;
@@ -331,15 +372,16 @@
             // btnChangeTable
             // 
             this.btnChangeTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnChangeTable.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnChangeTable.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
             this.btnChangeTable.FlatAppearance.BorderSize = 3;
             this.btnChangeTable.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnChangeTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangeTable.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChangeTable.Image = ((System.Drawing.Image)(resources.GetObject("btnChangeTable.Image")));
-            this.btnChangeTable.Location = new System.Drawing.Point(354, 3);
+            this.btnChangeTable.Location = new System.Drawing.Point(354, 0);
             this.btnChangeTable.Name = "btnChangeTable";
-            this.btnChangeTable.Size = new System.Drawing.Size(162, 51);
+            this.btnChangeTable.Size = new System.Drawing.Size(162, 57);
             this.btnChangeTable.TabIndex = 0;
             this.btnChangeTable.Text = "Chuyển bàn";
             this.btnChangeTable.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -356,7 +398,7 @@
             this.flowPanel.Location = new System.Drawing.Point(0, 80);
             this.flowPanel.Margin = new System.Windows.Forms.Padding(2);
             this.flowPanel.Name = "flowPanel";
-            this.flowPanel.Size = new System.Drawing.Size(638, 438);
+            this.flowPanel.Size = new System.Drawing.Size(1027, 438);
             this.flowPanel.TabIndex = 7;
             // 
             // cbTable
@@ -387,9 +429,9 @@
             this.panel3.Controls.Add(this.cbTable);
             this.panel3.Controls.Add(this.btnChangeTable);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(0, 523);
+            this.panel3.Location = new System.Drawing.Point(507, 523);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(638, 61);
+            this.panel3.Size = new System.Drawing.Size(520, 61);
             this.panel3.TabIndex = 9;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -397,12 +439,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 586);
+            this.ClientSize = new System.Drawing.Size(1530, 586);
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.flowPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -411,6 +454,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QUẢN LÝ CAFE";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing_1);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -447,6 +491,8 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnQLCategory;
         private System.Windows.Forms.Button btClose;
+        private System.Windows.Forms.Button btnQLaccount;
+        private System.Windows.Forms.Button btmLogout;
     }
 }
 

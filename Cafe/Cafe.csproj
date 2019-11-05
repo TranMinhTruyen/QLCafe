@@ -80,6 +80,12 @@
     <Compile Include="QLTable.Designer.cs">
       <DependentUpon>QLTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="QLTaiKhoang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QLTaiKhoang.designer.cs">
+      <DependentUpon>QLTaiKhoang.cs</DependentUpon>
+    </Compile>
     <Compile Include="QLThucUongForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QLTable.resx">
       <DependentUpon>QLTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QLTaiKhoang.resx">
+      <DependentUpon>QLTaiKhoang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QLThucUongForm.resx">
       <DependentUpon>QLThucUongForm.cs</DependentUpon>

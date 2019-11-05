@@ -124,27 +124,32 @@ namespace Cafe
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            Table table = lvBill.Tag as Table;
-
-            long idBill = BillProvider.Instance.GetBillId_By_TableId(table.Id);
-
-            if (idBill != -1)
+            if (lvBill.Tag == null)
             {
-                long totalPrice = Convert.ToInt64(txtTongTien.Text);
-
-                BillProvider.Instance.UpdateStatusBill(idBill, totalPrice);
-
-                TableProvider.Instance.UpdateTableStatus_0(table.Id);
-
-                ReportProvider.Instance.InsertReport(table.Id, idBill);
-
-                LoadTable();
-
-                MenuProvider.Instance.ShowMenu(table.Id, lvBill, txtTongTien);
+                MessageBox.Show("Chưa chọn bàn để thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show("Không có hóa đơn để thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Table table = lvBill.Tag as Table;
+                long idBill = BillProvider.Instance.GetBillId_By_TableId(table.Id);
+                if (idBill != -1)
+                {
+                    long totalPrice = Convert.ToInt64(txtTongTien.Text);
+
+                    BillProvider.Instance.UpdateStatusBill(idBill, totalPrice);
+
+                    TableProvider.Instance.UpdateTableStatus_0(table.Id);
+
+                    ReportProvider.Instance.InsertReport(table.Id, idBill);
+
+                    LoadTable();
+
+                    MenuProvider.Instance.ShowMenu(table.Id, lvBill, txtTongTien);
+                }
+                else
+                {
+                    MessageBox.Show("Không có hóa đơn để thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
         #endregion
@@ -164,13 +169,15 @@ namespace Cafe
                 btnQLDrink.Enabled = true;
                 btnQLCategory.Enabled = true;
                 btnQLTable.Enabled = true;
+                btnQLaccount.Enabled = true;
             }
             else if (message == "Staff")
             {
                 btnThongKe.Enabled = false;
-                btnQLDrink.Enabled = false;
-                btnQLCategory.Enabled = false;
+                btnQLDrink.Enabled = true;
+                btnQLCategory.Enabled = true;
                 btnQLTable.Enabled = false;
+                btnQLaccount.Enabled = false;
             }
         }
 
@@ -332,7 +339,10 @@ namespace Cafe
 
         private void btClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("Bạn có muốn thoát chương trình", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+            {
+                Application.ExitThread();
+            }
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -345,6 +355,31 @@ namespace Cafe
 
         }
 
+        private void btnQLaccount_Click(object sender, EventArgs e)
+        {
+            Database2.Form1 qltaikhoang = new Database2.Form1();
+            qltaikhoang.ShowDialog();
+            this.Show();
+        }
 
+        private void txtInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btmLogout_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn đăng xuất không ?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+            {
+                LoginForm form = new LoginForm();
+                form.Show();
+                this.Hide();
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
     }
 }

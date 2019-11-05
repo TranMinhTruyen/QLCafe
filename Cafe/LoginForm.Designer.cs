@@ -45,9 +45,10 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(26, 101);
+            this.label5.Location = new System.Drawing.Point(35, 124);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 28);
+            this.label5.Size = new System.Drawing.Size(147, 34);
             this.label5.TabIndex = 0;
             this.label5.Text = "Username:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -56,9 +57,10 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 151);
+            this.label1.Location = new System.Drawing.Point(35, 186);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 28);
+            this.label1.Size = new System.Drawing.Size(147, 34);
             this.label1.TabIndex = 6;
             this.label1.Text = "Password:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -67,18 +69,20 @@
             // txtUserName
             // 
             this.txtUserName.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(142, 101);
+            this.txtUserName.Location = new System.Drawing.Point(189, 124);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(182, 29);
+            this.txtUserName.Size = new System.Drawing.Size(241, 29);
             this.txtUserName.TabIndex = 1;
             // 
             // txtPassWord
             // 
             this.txtPassWord.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassWord.Location = new System.Drawing.Point(142, 151);
+            this.txtPassWord.Location = new System.Drawing.Point(189, 186);
+            this.txtPassWord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPassWord.Name = "txtPassWord";
             this.txtPassWord.PasswordChar = '*';
-            this.txtPassWord.Size = new System.Drawing.Size(182, 29);
+            this.txtPassWord.Size = new System.Drawing.Size(241, 29);
             this.txtPassWord.TabIndex = 2;
             this.txtPassWord.TextChanged += new System.EventHandler(this.txtPassWord_TextChanged);
             // 
@@ -90,9 +94,10 @@
             this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(142, 186);
+            this.btnLogin.Location = new System.Drawing.Point(189, 229);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(88, 33);
+            this.btnLogin.Size = new System.Drawing.Size(117, 41);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -106,9 +111,10 @@
             this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(236, 186);
+            this.btnExit.Location = new System.Drawing.Point(315, 229);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(88, 33);
+            this.btnExit.Size = new System.Drawing.Size(117, 41);
             this.btnExit.TabIndex = 4;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -126,18 +132,20 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtPassWord);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(399, 0);
+            this.panel1.Location = new System.Drawing.Point(533, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(354, 401);
+            this.panel1.Size = new System.Drawing.Size(471, 494);
             this.panel1.TabIndex = 7;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(26, 34);
+            this.label2.Location = new System.Drawing.Point(35, 42);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(298, 64);
+            this.label2.Size = new System.Drawing.Size(397, 79);
             this.label2.TabIndex = 0;
             this.label2.Text = "ĐĂNG NHẬP";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -147,8 +155,9 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(400, 400);
+            this.pictureBox1.Size = new System.Drawing.Size(533, 492);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
@@ -156,14 +165,15 @@
             // LoginForm
             // 
             this.AcceptButton = this.btnLogin;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 401);
+            this.ClientSize = new System.Drawing.Size(1004, 494);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";

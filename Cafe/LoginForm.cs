@@ -76,15 +76,14 @@ namespace Cafe
         #region Exit
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (MessageBox.Show("Bạn có muốn thoát chương trình", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+            {
+                Application.ExitThread();
+            }
         }
 
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(MessageBox.Show("Bạn có muốn thoát chương trình", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.OK)
-            {
-                e.Cancel = true;
-            }
         }
         #endregion
 
