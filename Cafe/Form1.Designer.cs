@@ -43,6 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.btnBillAdd = new System.Windows.Forms.Button();
             this.cbDrink = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
@@ -279,6 +280,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.btnXoa);
             this.panel2.Controls.Add(this.btnBillAdd);
             this.panel2.Controls.Add(this.cbDrink);
             this.panel2.Controls.Add(this.cbCategory);
@@ -293,6 +295,16 @@
             this.panel2.TabIndex = 6;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(434, 2);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(57, 57);
+            this.btnXoa.TabIndex = 9;
+            this.btnXoa.Text = "button1";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnBillAdd
             // 
             this.btnBillAdd.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -302,7 +314,7 @@
             this.btnBillAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBillAdd.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBillAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnBillAdd.Image")));
-            this.btnBillAdd.Location = new System.Drawing.Point(435, 3);
+            this.btnBillAdd.Location = new System.Drawing.Point(372, 2);
             this.btnBillAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnBillAdd.Name = "btnBillAdd";
             this.btnBillAdd.Size = new System.Drawing.Size(57, 57);
@@ -318,7 +330,7 @@
             this.cbDrink.Location = new System.Drawing.Point(2, 32);
             this.cbDrink.Margin = new System.Windows.Forms.Padding(2);
             this.cbDrink.Name = "cbDrink";
-            this.cbDrink.Size = new System.Drawing.Size(429, 27);
+            this.cbDrink.Size = new System.Drawing.Size(366, 27);
             this.cbDrink.TabIndex = 7;
             // 
             // cbCategory
@@ -328,7 +340,7 @@
             this.cbCategory.Location = new System.Drawing.Point(2, 2);
             this.cbCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(429, 27);
+            this.cbCategory.Size = new System.Drawing.Size(366, 27);
             this.cbCategory.TabIndex = 7;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
@@ -340,6 +352,7 @@
             this.columnHeader3,
             this.columnHeader4});
             this.lvBill.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lvBill.FullRowSelect = true;
             this.lvBill.HideSelection = false;
             this.lvBill.Location = new System.Drawing.Point(2, 63);
             this.lvBill.Margin = new System.Windows.Forms.Padding(2);
@@ -493,6 +506,7 @@
         private System.Windows.Forms.Button btClose;
         private System.Windows.Forms.Button btnQLaccount;
         private System.Windows.Forms.Button btmLogout;
+        private System.Windows.Forms.Button btnXoa;
     }
 }
 

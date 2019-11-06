@@ -121,6 +121,27 @@ namespace Cafe
                 MenuProvider.Instance.ShowMenu(table.Id, lvBill, txtTongTien);
             }
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Table table = lvBill.Tag as Table;
+
+            if (table == null)
+            {
+                MessageBox.Show("Bạn chưa chọn bàn!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                foreach(ListViewItem item in lvBill.SelectedItems)
+                {
+                    lvBill.Items.Remove(item);
+
+                }
+
+                LoadTable();
+
+                MenuProvider.Instance.ShowMenu(table.Id, lvBill, txtTongTien);
+            }
+        }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
@@ -381,5 +402,7 @@ namespace Cafe
         {
             
         }
+
+
     }
 }
