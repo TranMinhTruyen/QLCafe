@@ -423,6 +423,34 @@ namespace Cafe
             
         }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void txtTongTien_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Table table = lvBill.Tag as Table;
+
+            if (table == null)
+            {
+                MessageBox.Show("Bạn chưa chọn bàn!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                BillProvider.Instance.DeleteBill_By_IdTable(table.Id);
+
+                TableProvider.Instance.UpdateTableStatus_1(table.Id);
+
+                LoadTable();
+
+                MenuProvider.Instance.ShowMenu(table.Id, lvBill, txtTongTien);
+            }
+        }
     }
 }
