@@ -32,7 +32,7 @@ namespace Cafe
         {
             List<Menu> listMenu = new List<Menu>();
 
-            string query = "SELECT Drink.Name, BillInfo.CountDrink, Drink.Price, Drink.Price * BillInfo.CountDrink AS TotalPrice FROM Drink, Bill, BillInfo WHERE BillInfo.IdBill = Bill.Id AND BillInfo.IdDrink = Drink.Id AND Bill.Status = 0 AND Bill.IdTable = " + idTable.ToString();
+            string query = "SELECT BillInfo.Id, Drink.Name, BillInfo.CountDrink, Drink.Price, Drink.Price * BillInfo.CountDrink AS TotalPrice FROM Drink, Bill, BillInfo WHERE BillInfo.IdBill = Bill.Id AND BillInfo.IdDrink = Drink.Id AND Bill.Status = 0 AND Bill.IdTable = " + idTable.ToString();
 
             DataTable dataMenu = DataProvider.Instance.ExecuteQuery(query);
 
@@ -48,6 +48,8 @@ namespace Cafe
 
         public void ShowMenu(long idTable, ListView lvMenu, TextBox txtTongTien)
         {
+            Form1.listIdBillInfo.Clear();
+
             lvMenu.Items.Clear();
 
             long sumPrice = 0;
@@ -58,7 +60,8 @@ namespace Cafe
             {
                 ListViewItem lvItem = new ListViewItem();
 
-                lvItem.SubItems[0].Text = item.Name.ToString();
+                lvItem.SubItems.Add(item.Id.ToString());
+                lvItem.SubItems.Add(item.Name.ToString());
                 lvItem.SubItems.Add(item.CountDrink.ToString());
                 lvItem.SubItems.Add(item.Price.ToString());
                 lvItem.SubItems.Add(item.TotalPrice.ToString());
@@ -66,10 +69,16 @@ namespace Cafe
                 sumPrice += item.TotalPrice;
 
                 lvMenu.Items.Add(lvItem);
+
+                Form1.listIdBillInfo.Add(item.Id);
             }
 
             txtTongTien.Text = sumPrice.ToString();
         }
+        public static List<long> listIdBillInfo = new List<long>();
+
+
+
         #endregion
     }
 }

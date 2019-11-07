@@ -48,6 +48,7 @@
             this.cbDrink = new System.Windows.Forms.ComboBox();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.lvBill = new System.Windows.Forms.ListView();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -57,6 +58,7 @@
             this.cbTable = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -252,7 +254,7 @@
             this.label4.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(152, 428);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 22);
+            this.label4.Size = new System.Drawing.Size(122, 27);
             this.label4.TabIndex = 5;
             this.label4.Text = "Tổng cộng:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -330,7 +332,7 @@
             this.cbDrink.Location = new System.Drawing.Point(2, 32);
             this.cbDrink.Margin = new System.Windows.Forms.Padding(2);
             this.cbDrink.Name = "cbDrink";
-            this.cbDrink.Size = new System.Drawing.Size(366, 27);
+            this.cbDrink.Size = new System.Drawing.Size(366, 32);
             this.cbDrink.TabIndex = 7;
             // 
             // cbCategory
@@ -340,13 +342,15 @@
             this.cbCategory.Location = new System.Drawing.Point(2, 2);
             this.cbCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(366, 27);
+            this.cbCategory.Size = new System.Drawing.Size(366, 32);
             this.cbCategory.TabIndex = 7;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
             // lvBill
             // 
             this.lvBill.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader6,
+            this.columnHeader5,
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
@@ -362,23 +366,32 @@
             this.lvBill.UseCompatibleStateImageBehavior = false;
             this.lvBill.View = System.Windows.Forms.View.Details;
             // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "ID";
+            this.columnHeader5.Width = 50;
+            // 
             // columnHeader1
             // 
+            this.columnHeader1.DisplayIndex = 2;
             this.columnHeader1.Text = "Mặt hàng";
             this.columnHeader1.Width = 169;
             // 
             // columnHeader2
             // 
+            this.columnHeader2.DisplayIndex = 3;
             this.columnHeader2.Text = "Số lượng";
             this.columnHeader2.Width = 79;
             // 
             // columnHeader3
             // 
+            this.columnHeader3.DisplayIndex = 4;
             this.columnHeader3.Text = "Đơn giá";
             this.columnHeader3.Width = 95;
             // 
             // columnHeader4
             // 
+            this.columnHeader4.DisplayIndex = 5;
             this.columnHeader4.Text = "Tổng tiền";
             this.columnHeader4.Width = 147;
             // 
@@ -421,7 +434,7 @@
             this.cbTable.Location = new System.Drawing.Point(207, 14);
             this.cbTable.Margin = new System.Windows.Forms.Padding(2);
             this.cbTable.Name = "cbTable";
-            this.cbTable.Size = new System.Drawing.Size(142, 30);
+            this.cbTable.Size = new System.Drawing.Size(142, 35);
             this.cbTable.TabIndex = 8;
             // 
             // label2
@@ -448,9 +461,14 @@
             this.panel3.TabIndex = 9;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
+            // columnHeader6
+            // 
+            this.columnHeader6.DisplayIndex = 0;
+            this.columnHeader6.Width = 0;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1530, 586);
             this.ControlBox = false;
@@ -507,6 +525,8 @@
         private System.Windows.Forms.Button btnQLaccount;
         private System.Windows.Forms.Button btmLogout;
         private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }
 

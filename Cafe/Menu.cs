@@ -9,6 +9,8 @@ namespace Cafe
 {
     public class Menu
     {
+        private long id;
+
         private string name;
 
         public string Name
@@ -41,8 +43,11 @@ namespace Cafe
             set { totalPrice = value; }
         }
 
-        public Menu(string name, long count, long price, long totalPrice)
+        public long Id { get => id; set => id = value; }
+
+        public Menu(long id, string name, long count, long price, long totalPrice)
         {
+            this.Id = id;
             this.Name = name;
             this.CountDrink = count;
             this.Price = price;
@@ -51,6 +56,7 @@ namespace Cafe
 
         public Menu(DataRow row)
         {
+            this.Id = (long)row["Id"];
             this.Name = row["Name"].ToString();
             this.CountDrink = (long)row["CountDrink"];
             this.Price = (long)row["Price"];

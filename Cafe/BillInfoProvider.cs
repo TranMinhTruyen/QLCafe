@@ -76,6 +76,22 @@ namespace Cafe
             }
         }
 
+        public List<BillInfo> GetListBillInfo_By_Id() // Unit Test
+        {
+            List<BillInfo> listBillInfo = new List<BillInfo>();
+
+            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT * FROM BillInfo");
+
+            foreach (DataRow item in data.Rows)
+            {
+                BillInfo billInfo = new BillInfo(item);
+
+                listBillInfo.Add(billInfo);
+            }
+
+            return listBillInfo;
+        }
+
         public bool InsertBillInfo(long idDrink, long idBill, long countDrink = 1) // Unit Test
         {
             long drinkCount = 0;
@@ -216,6 +232,34 @@ namespace Cafe
             if (billCount > 0)
             {
                 string query = "DELETE FROM BillInfo WHERE IdBill = " + idBIll.ToString();
+
+                DataProvider.Instance.ExecuteNonQuery(query);
+
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public bool DeleteBillInfo_By_IdBillInfo(long idBillInfo) // Unit Test
+        {
+            long billInfoCount = 0;
+
+            List<BillInfo> listBillInfo = GetListBillInfo_By_Id();
+
+            foreach (BillInfo item in listBillInfo)
+            {
+                if (item.Id == idBillInfo)
+                {
+                    billInfoCount++;
+
+                    break;
+                }
+            }
+
+            if (billInfoCount > 0)
+            {
+                string query = "DELETE FROM BillInfo WHERE Id = " + idBillInfo.ToString();
 
                 DataProvider.Instance.ExecuteNonQuery(query);
 

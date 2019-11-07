@@ -13,6 +13,7 @@ namespace Cafe
     {
         public static List<Button> buttonList = new List<Button>();
         public static List<Table> listTable = new List<Table>();
+        public static List<long> listIdBillInfo = new List<long>();
 
         private string _message;
 
@@ -25,6 +26,8 @@ namespace Cafe
             TableProvider.Instance.LoadListTable(cbTable, listTable);
 
             CategoryProvider.Instance.LoadCategory(cbCategory);
+
+            lvBill.Columns[1].Width = 0;
         }
 
         #region Info Account
@@ -123,24 +126,41 @@ namespace Cafe
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            foreach (ListViewItem item in lvBill.SelectedItems)
+            {
+                string idBillInfo = item.SubItems[1].Text;
+
+                foreach (long id in listIdBillInfo)
+                {
+                    if (idBillInfo == id.ToString())
+                    {
+                        BillInfoProvider.Instance.DeleteBillInfo_By_IdBillInfo(id);
+                    }
+                }
+            }
+
             Table table = lvBill.Tag as Table;
 
-            if (table == null)
+            if (table != null)
             {
-                MessageBox.Show("Bạn chưa chọn bàn!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                long idBill = BillProvider.Instance.GetBillId_By_TableId(table.Id);
+
+                if (idBill != -1)
+                {
+                    List<BillInfo> a = BillInfoProvider.Instance.GetListBillInfo_By_IdBill(idBill);
+
+                    if (a.Count == 0)
+                        BillProvider.Instance.DeleteBill(idBill);
+
+                    TableProvider.Instance.UpdateTableStatus_0(table.Id);
+
+                    LoadTable();
+
+                    MenuProvider.Instance.ShowMenu(table.Id, lvBill, txtTongTien);
+                }
             }
             else
-            {
-                foreach(ListViewItem item in lvBill.SelectedItems)
-                {
-                    lvBill.Items.Remove(item);
-
-                }
-
-                LoadTable();
-
-                MenuProvider.Instance.ShowMenu(table.Id, lvBill, txtTongTien);
-            }
+                MessageBox.Show("Bạn chưa chọn bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
