@@ -78,9 +78,16 @@ namespace Cafe
 
             long idTableNew = (cbTable.SelectedItem as Table).Id;
 
-            TableProvider.Instance.SwitchTable(idTableOld, idTableNew);
+            if (MessageBox.Show("Bạn có muốn chuyển bàn?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+            {
+                TableProvider.Instance.SwitchTable(idTableOld, idTableNew);
 
-            LoadTable();
+                LoadTable();
+
+                MessageBox.Show("Chuyển bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+            else
+                MessageBox.Show("Không thực hiện chuyển bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         #endregion
 
