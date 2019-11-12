@@ -38,9 +38,17 @@ namespace Database2
             string acc = txtACC.Text;
             string pass = txtPASS.Text;
             string type = txtTYPE.Text;
-            string query = "INSERT INTO Account (Username,Password,Type) VALUES (" + "'" + acc + "'" + "," + "'" + pass + "'" + "," + "'" + type + "'" + ")";
-            Cafe.DataProvider.Instance.ExecuteNonQuery(query);
-            HienThi();
+            bool check = Cafe.AccoutProvider.Instance.CheckAccoutExit(acc,pass);
+            if (check == false)
+            {
+                string query = "INSERT INTO Account (Username,Password,Type) VALUES (" + "'" + acc + "'" + "," + "'" + pass + "'" + "," + "'" + type + "'" + ")";
+                Cafe.DataProvider.Instance.ExecuteNonQuery(query);
+                HienThi();
+            }
+            else
+            {
+                MessageBox.Show("Tài khoản đã tồn tại!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
         //Xóa
