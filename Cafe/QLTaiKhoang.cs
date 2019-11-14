@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Cafe;
 
 namespace Database2
 {
@@ -38,18 +39,39 @@ namespace Database2
             string acc = txtACC.Text;
             string pass = txtPASS.Text;
             string type = txtTYPE.Text;
-            bool check = Cafe.AccoutProvider.Instance.CheckAccoutExit(acc,pass);
-            if (check == false)
+            try
             {
-                string query = "INSERT INTO Account (Username,Password,Type) VALUES (" + "'" + acc + "'" + "," + "'" + pass + "'" + "," + "'" + type + "'" + ")";
-                Cafe.DataProvider.Instance.ExecuteNonQuery(query);
-                HienThi();
+                if (acc == "" || pass == "" || type == "")
+                {
+                    throw new FormatException();
+                }
+                if (type != "0")
+                {
+                    if (type != "1")
+                    {
+                        throw new Exception("Tài khoản không hợp lệ");
+                    }                   
+                }
+                bool check = Cafe.AccoutProvider.Instance.CheckAccoutExit(acc, pass);
+                if (check == false)
+                {
+                    string query = "INSERT INTO Account (Username,Password,Type) VALUES (" + "'" + acc + "'" + "," + "'" + pass + "'" + "," + "'" + type + "'" + ")";
+                    Cafe.DataProvider.Instance.ExecuteNonQuery(query);
+                    HienThi();
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản đã tồn tại!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
+            catch (FormatException error1)
             {
-                MessageBox.Show("Tài khoản đã tồn tại!!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tài khoản không hợp lệ", error1.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
+            catch (Exception error2)
+            {
+                MessageBox.Show("Chỉ nhận giá trị 0 hoặc 1", error2.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         //Xóa
         private void button2_Click(object sender, EventArgs e)
@@ -65,13 +87,39 @@ namespace Database2
         //Sửa
         private void button3_Click(object sender, EventArgs e)
         {
-            string key = dataGridView1.SelectedCells[0].Value.ToString();
             string acc = txtACC.Text;
             string pass = txtPASS.Text;
             string type = txtTYPE.Text;
-            string query = "UPDATE Account SET Username = " + "'" + acc + "'" + ",Password= " + "'" + pass + "'" + ",Type= " + "'" + type + "'" + " WHERE Username = " + "'" + key + "'" + "";
-            Cafe.DataProvider.Instance.ExecuteNonQuery(query);
-            HienThi();
+            string key = dataGridView1.SelectedCells[0].Value.ToString();
+            try
+            {
+                if (acc == "" || pass == "" || type == "")
+                {
+                    throw new FormatException();
+                }
+                if (type != "0")
+                {
+                    if (type != "1")
+                    {
+                        throw new Exception("Tài khoản không hợp lệ");
+                    }
+                }
+                string query = "UPDATE Account SET Username = " + "'" + acc + "'" + ",Password= " + "'" + pass + "'" + ",Type= " + "'" + type + "'" + " WHERE Username = " + "'" + key + "'" + "";
+                Cafe.DataProvider.Instance.ExecuteNonQuery(query);
+                HienThi();          
+            }
+            catch (FormatException error1)
+            {
+                MessageBox.Show("Tài khoản không hợp lệ", error1.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception error2)
+            {
+                MessageBox.Show("Chỉ nhận giá trị 0 hoặc 1", error2.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
+
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -103,6 +151,10 @@ namespace Database2
         private void txtPASS_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtACC_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }
