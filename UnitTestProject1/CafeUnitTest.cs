@@ -85,7 +85,6 @@ namespace CafeTester
             Assert.IsNull(result);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"TableDataTestUpdate.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\TableDataTestUpdate.csv", "TableDataTestUpdate#csv", DataAccessMethod.Sequential)]
@@ -94,52 +93,72 @@ namespace CafeTester
             long id = Convert.ToInt64(TestContext.DataRow[0].ToString());
             string name = TestContext.DataRow[1].ToString();
 
+            TableProvider.Instance.InsertTable(name); // Create Test Data
+
             bool expected = Convert.ToBoolean(TestContext.DataRow[2].ToString());
             bool actual = Cafe.TableProvider.Instance.UpdateTable(id, name);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.DeleteTable(7);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"TableDataTestUpdate.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\TableDataTestUpdate.csv", "TableDataTestUpdate#csv", DataAccessMethod.Sequential)]
         public void Test_Update_Status_Table_To_1()
         {
             long id = Convert.ToInt64(TestContext.DataRow[0].ToString());
+            string name = TestContext.DataRow[1].ToString();
+
+            TableProvider.Instance.InsertTable(name); // Create Test Data
 
             bool expected = Convert.ToBoolean(TestContext.DataRow[2].ToString());
             bool actual = Cafe.TableProvider.Instance.UpdateTableStatus_1(id);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.DeleteTable(7);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"TableDataTestUpdate.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\TableDataTestUpdate.csv", "TableDataTestUpdate#csv", DataAccessMethod.Sequential)]
         public void Test_Update_Status_Table_To_0()
         {
             long id = Convert.ToInt64(TestContext.DataRow[0].ToString());
+            string name = TestContext.DataRow[1].ToString();
+
+            TableProvider.Instance.InsertTable(name); // Create Test Data
 
             bool expected = Convert.ToBoolean(TestContext.DataRow[2].ToString());
             bool actual = Cafe.TableProvider.Instance.UpdateTableStatus_0(id);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.DeleteTable(7);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"TableDataTestUpdate.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\TableDataTestUpdate.csv", "TableDataTestUpdate#csv", DataAccessMethod.Sequential)]
         public void Test_Delete_Table()
         {
             long id = Convert.ToInt64(TestContext.DataRow[0].ToString());
+            string name = TestContext.DataRow[1].ToString();
+
+            TableProvider.Instance.InsertTable(name); // Create Test Data
 
             bool expected = Convert.ToBoolean(TestContext.DataRow[2].ToString());
             bool actual = Cafe.TableProvider.Instance.DeleteTable(id);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.DeleteTable(7);
         }
 
         [TestMethod]
@@ -158,7 +177,6 @@ namespace CafeTester
         #endregion
 
         #region Test Category Methods
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"CategoryDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\CategoryDataTest.csv", "CategoryDataTest#csv", DataAccessMethod.Sequential)]
@@ -167,24 +185,34 @@ namespace CafeTester
             long id = Convert.ToInt64(TestContext.DataRow[0].ToString());
             string name = TestContext.DataRow[1].ToString();
 
+            CategoryProvider.Instance.InsertCategory(name); // Create Test Data
+
             bool expected = Convert.ToBoolean(TestContext.DataRow[2].ToString());
             bool actual = Cafe.CategoryProvider.Instance.UpdateCategory(id, name);
 
             Assert.AreEqual(expected, actual);
-        }
 
-        [Ignore]       
+            // Delete Test Data
+            CategoryProvider.Instance.DeleteCategory(4);
+        }
+     
         [TestMethod]
         [DeploymentItem(@"CategoryDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\CategoryDataTest.csv", "CategoryDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Delete_Category()
         {
             long id = Convert.ToInt64(TestContext.DataRow[0].ToString());
+            string name = TestContext.DataRow[1].ToString();
+
+            CategoryProvider.Instance.InsertCategory(name); // Create Test Data
 
             bool expected = Convert.ToBoolean(TestContext.DataRow[2].ToString());
             bool actual = Cafe.CategoryProvider.Instance.DeleteCategory(id);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            CategoryProvider.Instance.DeleteCategory(4);
         }
         #endregion
 
@@ -202,7 +230,7 @@ namespace CafeTester
             Assert.AreEqual(expected, actual);
         }
 
-        [Ignore]     
+           
         [TestMethod]
         [DeploymentItem(@"DrinkDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\DrinkDataTest.csv", "DrinkDataTest#csv", DataAccessMethod.Sequential)]
@@ -216,9 +244,11 @@ namespace CafeTester
             bool actual = Cafe.DrinkProvider.Instance.InsertDrink(name, price, idCategory);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            DrinkProvider.Instance.DeleteDrink(10);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"DrinkDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\DrinkDataTest.csv", "DrinkDataTest#csv", DataAccessMethod.Sequential)]
@@ -229,24 +259,37 @@ namespace CafeTester
             long price = 0;
             long idCategory = Convert.ToInt64(TestContext.DataRow[2].ToString());
 
+            DrinkProvider.Instance.InsertDrink(name, price, idCategory); // Create Test Data
+
             bool expected = Convert.ToBoolean(TestContext.DataRow[4].ToString());
             bool actual = Cafe.DrinkProvider.Instance.UpdateDrink(id, name, price, idCategory);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            DrinkProvider.Instance.DeleteDrink(10);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"DrinkDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\DrinkDataTest.csv", "DrinkDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Delete_Drink()
         {
             long id = Convert.ToInt64(TestContext.DataRow[0].ToString());
+            string name = TestContext.DataRow[1].ToString();
+            long idCategory = Convert.ToInt64(TestContext.DataRow[2].ToString());
+
+            CategoryProvider.Instance.InsertCategory(name); // Create Test Data
+            DrinkProvider.Instance.InsertDrink(name, 0, idCategory); // Create Test Data
 
             bool expected = Convert.ToBoolean(TestContext.DataRow[4].ToString());
             bool actual = Cafe.DrinkProvider.Instance.DeleteDrink(id);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            DrinkProvider.Instance.DeleteDrink(10);
+            CategoryProvider.Instance.DeleteCategory(4);
         }
         #endregion
 
@@ -256,12 +299,23 @@ namespace CafeTester
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\MenuDataTest.csv", "MenuDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Get_List_Menu()
         {
+            long idBill = 1;
+            long idDrink = 1;
             long idTable = Convert.ToInt64(TestContext.DataRow[0].ToString());
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
+            BillInfoProvider.Instance.InsertBillInfo(idDrink, idBill); // Create Test Data
 
             long expected = Convert.ToInt64(TestContext.DataRow[1].ToString());
             long actual = Cafe.MenuProvider.Instance.GetListMenu(idTable).Count;
 
             Assert.AreEqual(expected, actual);
+
+            // Create Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(1, 0);
+            BillInfoProvider.Instance.DeleteBillInfo_By_IdBillInfo(idBill);
+            BillProvider.Instance.DeleteBill(idBill);
         }
         #endregion
 
@@ -272,21 +326,38 @@ namespace CafeTester
         public void Test_Get_BillId_By_TableId()
         {
             long idTable = Convert.ToInt64(TestContext.DataRow[1].ToString());
+            long idBill = Convert.ToInt64(TestContext.DataRow[0].ToString());
 
             long expected = Convert.ToInt64(TestContext.DataRow[3].ToString());
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
+
             long actual = Cafe.BillProvider.Instance.GetBillId_By_TableId(idTable);
 
             Assert.AreEqual(expected, actual);
+
+            // Create Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(1, 0);
+            BillProvider.Instance.DeleteBill(idBill);
         }
 
         [TestMethod]
         public void Test_Get_BillId_By_Right_IdBill()
         {
+            long idTable = 1;
             long idBill = 1;
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
 
             Bill result = Cafe.BillProvider.Instance.GetBill_By_Id(idBill);
 
             Assert.IsNotNull(result);
+
+            // Create Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(idBill, 0);
+            BillProvider.Instance.DeleteBill(idBill);
         }
 
         [TestMethod]
@@ -304,12 +375,20 @@ namespace CafeTester
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\BillDataTest.csv", "BillDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Get_List_Bill_By_TableId()
         {
+            long idBill = Convert.ToInt64(TestContext.DataRow[0].ToString());
             long idTable = Convert.ToInt64(TestContext.DataRow[1].ToString());
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
 
             long expected = Convert.ToInt64(TestContext.DataRow[4].ToString());
             long actual = Cafe.BillProvider.Instance.GetListBill_By_TableID(idTable).Count;
 
             Assert.AreEqual(expected, actual);
+
+            // Create Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(1, 0);
+            BillProvider.Instance.DeleteBill_By_IdTable(idTable);
         }
 
         [TestMethod]
@@ -317,15 +396,26 @@ namespace CafeTester
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\BillDataTest.csv", "BillDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Get_List_Bill_By_DrinkId()
         {
+            long idTable = 1;
+            long idBill = Convert.ToInt64(TestContext.DataRow[0].ToString());
             long idDrink = Convert.ToInt64(TestContext.DataRow[2].ToString());
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
+            BillInfoProvider.Instance.InsertBillInfo(idDrink, idBill); // Create Test Data
 
             long expected = Convert.ToInt64(TestContext.DataRow[4].ToString());
             long actual = Cafe.BillProvider.Instance.GetListBillId_By_IdDrink(idDrink).Count;
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(1, 0);
+            BillInfoProvider.Instance.DeleteBillInfo_By_idBill(idBill);
+            BillProvider.Instance.DeleteBill_By_IdTable(idTable);
         }
 
-        [Ignore]
+        
         [TestMethod]
         [DeploymentItem(@"BillDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\BillDataTest.csv", "BillDataTest#csv", DataAccessMethod.Sequential)]
@@ -337,38 +427,53 @@ namespace CafeTester
             bool actual = Cafe.BillProvider.Instance.InsertBill(idTable);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(1, 0);
+            BillProvider.Instance.DeleteBill_By_IdTable(idTable);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"BillDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\BillDataTest.csv", "BillDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Update_Status_Bill()
         {
+            long idTable = Convert.ToInt64(TestContext.DataRow[1].ToString());
             long idBill = Convert.ToInt64(TestContext.DataRow[0].ToString());
             long totalPrice = 0;
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
 
             bool expected = Convert.ToBoolean(TestContext.DataRow[5].ToString());
             bool actual = Cafe.BillProvider.Instance.UpdateStatusBill(idBill, totalPrice);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.DeleteBill_By_IdTable(idTable);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"BillDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\BillDataTest.csv", "BillDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Delete_Bill_By_IdBill()
         {
+            long idTable = Convert.ToInt64(TestContext.DataRow[1].ToString());
             long idBill = Convert.ToInt64(TestContext.DataRow[0].ToString());
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
 
             bool expected = Convert.ToBoolean(TestContext.DataRow[5].ToString());
             bool actual = Cafe.BillProvider.Instance.DeleteBill(idBill);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"BillDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\BillDataTest.csv", "BillDataTest#csv", DataAccessMethod.Sequential)]
@@ -376,10 +481,15 @@ namespace CafeTester
         {
             long idTable = Convert.ToInt64(TestContext.DataRow[1].ToString());
 
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
+
             bool expected = Convert.ToBoolean(TestContext.DataRow[5].ToString());
             bool actual = Cafe.BillProvider.Instance.DeleteBill_By_IdTable(idTable);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
         }
         #endregion 
 
@@ -420,12 +530,23 @@ namespace CafeTester
         [TestMethod]
         public void Test_Get_BillInfo_By_Right_IdDrink_Right_IdBill()
         {
-            long idDrink = 10;
+            long idDrink = 1;
             long idBill = 1;
+            long idTable = 1;
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
+
+            BillInfoProvider.Instance.InsertBillInfo(idDrink, idBill); // Create Test Data
 
             BillInfo result = Cafe.BillInfoProvider.Instance.GetBillInfo_ByDrinkID_And_BillId(idDrink, idBill);
 
             Assert.IsNotNull(result);
+
+            // Create Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(1, 0);
+            BillInfoProvider.Instance.DeleteBillInfo_By_IdBillInfo(result.Id);
+            BillProvider.Instance.DeleteBill(idBill);
         }
 
         [TestMethod]
@@ -433,75 +554,120 @@ namespace CafeTester
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\BillInfoDataTest.csv", "BillInfoDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Get_List_BillInfo_By_IdBill()
         {
+            long idTable = 1;
             long idBill = Convert.ToInt64(TestContext.DataRow[0].ToString());
+            long idDrink = Convert.ToInt64(TestContext.DataRow[1].ToString());
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
+            BillInfoProvider.Instance.InsertBillInfo(idDrink, idBill); // Create Test Data
 
             long expected = Convert.ToInt64(TestContext.DataRow[2].ToString());
             long actual = Cafe.BillInfoProvider.Instance.GetListBillInfo_By_IdBill(idBill).Count;
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(1, 0);
+            BillInfoProvider.Instance.DeleteBillInfo_By_idBill(idBill);
+            BillProvider.Instance.DeleteBill_By_IdTable(idTable);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"BillInfoDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\BillInfoDataTest.csv", "BillInfoDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Insert_BillInfo()
         {
+            long idTable = 1;
             long idBill = Convert.ToInt64(TestContext.DataRow[0].ToString());
             long idDrink = Convert.ToInt64(TestContext.DataRow[1].ToString());
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
 
             bool expected = Convert.ToBoolean(TestContext.DataRow[3].ToString());
             bool actual = Cafe.BillInfoProvider.Instance.InsertBillInfo(idDrink, idBill);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(1, 0);
+            BillInfoProvider.Instance.DeleteBillInfo_By_idBill(idBill);
+            BillProvider.Instance.DeleteBill_By_IdTable(idTable);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"BillInfoDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\BillInfoDataTest.csv", "BillInfoDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Update_BillInfo()
         {
+            long idTable = 1;
             long idBill = Convert.ToInt64(TestContext.DataRow[0].ToString());
             long idDrink = Convert.ToInt64(TestContext.DataRow[1].ToString());
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
+            BillInfoProvider.Instance.InsertBillInfo(idDrink, idBill); // Create Test Data
 
             bool expected = Convert.ToBoolean(TestContext.DataRow[3].ToString());
             bool actual = Cafe.BillInfoProvider.Instance.UpdateBillInfo(idDrink, idBill);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(1, 0);
+            BillInfoProvider.Instance.DeleteBillInfo_By_idBill(idBill);
+            BillProvider.Instance.DeleteBill_By_IdTable(idTable);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"BillInfoDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\BillInfoDataTest.csv", "BillInfoDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Delete_BillInfo_By_IdDrink()
         {
+            long idTable = 1;
+            long idBill= Convert.ToInt64(TestContext.DataRow[0].ToString());
             long idDrink = Convert.ToInt64(TestContext.DataRow[1].ToString());
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
+            BillInfoProvider.Instance.InsertBillInfo(idDrink, idBill); // Create Test Data
 
             bool expected = Convert.ToBoolean(TestContext.DataRow[3].ToString());
             bool actual = Cafe.BillInfoProvider.Instance.DeleteBillInfo_By_idDrink(idDrink);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(1, 0);
+            BillProvider.Instance.DeleteBill_By_IdTable(idTable);
         }
 
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"BillInfoDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\BillInfoDataTest.csv", "BillInfoDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Delete_BillInfo_By_IdBill()
         {
+            long idTable = 1;
             long idBill= Convert.ToInt64(TestContext.DataRow[0].ToString());
+            long idDrink = Convert.ToInt64(TestContext.DataRow[1].ToString());
+
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
+            BillInfoProvider.Instance.InsertBillInfo(idDrink, idBill); // Create Test Data
 
             bool expected = Convert.ToBoolean(TestContext.DataRow[3].ToString());
             bool actual = Cafe.BillInfoProvider.Instance.DeleteBillInfo_By_idBill(idBill);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(1, 0);
+            BillProvider.Instance.DeleteBill_By_IdTable(idTable);
         }
         #endregion
 
         #region Test Report Methods
-        [Ignore]
         [TestMethod]
         [DeploymentItem(@"ReportDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\ReportDataTest.csv", "ReportDataTest#csv", DataAccessMethod.Sequential)]
@@ -510,10 +676,17 @@ namespace CafeTester
             long idTable = Convert.ToInt64(TestContext.DataRow[0].ToString());
             long idBill = Convert.ToInt64(TestContext.DataRow[1].ToString());
 
+            BillProvider.Instance.InsertBill(idTable); // Create Test Data
+
             bool expected = Convert.ToBoolean(TestContext.DataRow[2].ToString());
             bool actual = Cafe.ReportProvider.Instance.InsertReport(idTable, idBill);
 
             Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            TableProvider.Instance.UpdateTableStatus_0(idTable);
+            BillProvider.Instance.UpdateStatusBill(1, 0);
+            BillProvider.Instance.DeleteBill_By_IdTable(idTable);
         }
         #endregion
     }
