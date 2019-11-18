@@ -77,17 +77,22 @@ namespace Cafe
             long idTableOld = (lvBill.Tag as Table).Id;
 
             long idTableNew = (cbTable.SelectedItem as Table).Id;
-
-            if (MessageBox.Show("Bạn có muốn chuyển bàn?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+            if ((cbTable.SelectedItem as Table).Status == 0)
             {
-                TableProvider.Instance.SwitchTable(idTableOld, idTableNew);
+                if (MessageBox.Show("Bạn có muốn chuyển bàn?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+                {
 
-                LoadTable();
+                    TableProvider.Instance.SwitchTable(idTableOld, idTableNew);
 
-                MessageBox.Show("Chuyển bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    LoadTable();
+
+                    MessageBox.Show("Chuyển bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+                else
+                    MessageBox.Show("Không thực hiện chuyển bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
             else
-                MessageBox.Show("Không thực hiện chuyển bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("Bàn đã có người, hãy chọn bàn khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         #endregion
 
