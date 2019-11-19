@@ -74,27 +74,32 @@ namespace Cafe
 
         private void btnChangeTable_Click(object sender, EventArgs e)
         {
-            long idTableOld = (lvBill.Tag as Table).Id;
-            long idTableNew = (cbTable.SelectedItem as Table).Id;
-
-            if ((cbTable.SelectedItem as Table).Status == 0)
+            if(lvBill.Tag != null)
             {
-                if (MessageBox.Show("Bạn có muốn chuyển bàn?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+                long idTableOld = (lvBill.Tag as Table).Id;
+                long idTableNew = (cbTable.SelectedItem as Table).Id;
+
+                if ((cbTable.SelectedItem as Table).Status == 0)
                 {
+                    if (MessageBox.Show("Bạn có muốn chuyển bàn?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+                    {
 
-                    TableProvider.Instance.SwitchTable(idTableOld, idTableNew);
+                        TableProvider.Instance.SwitchTable(idTableOld, idTableNew);
 
-                    LoadTable();
+                        LoadTable();
 
-                    TableProvider.Instance.LoadListTable(cbTable, listTable);
+                        TableProvider.Instance.LoadListTable(cbTable, listTable);
 
-                    MessageBox.Show("Chuyển bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("Chuyển bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    else
+                        MessageBox.Show("Không thực hiện chuyển bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
                 else
-                    MessageBox.Show("Không thực hiện chuyển bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    MessageBox.Show("Bàn đã có người, vui lòng chọn bàn khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
             else
-                MessageBox.Show("Bàn đã có người, vui lòng chọn bàn khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("Bạn chưa chọn bàn cần chuyển", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         #endregion
 
