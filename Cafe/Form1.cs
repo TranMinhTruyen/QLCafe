@@ -75,8 +75,8 @@ namespace Cafe
         private void btnChangeTable_Click(object sender, EventArgs e)
         {
             long idTableOld = (lvBill.Tag as Table).Id;
-
             long idTableNew = (cbTable.SelectedItem as Table).Id;
+
             if ((cbTable.SelectedItem as Table).Status == 0)
             {
                 if (MessageBox.Show("Bạn có muốn chuyển bàn?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
@@ -85,6 +85,8 @@ namespace Cafe
                     TableProvider.Instance.SwitchTable(idTableOld, idTableNew);
 
                     LoadTable();
+
+                    TableProvider.Instance.LoadListTable(cbTable, listTable);
 
                     MessageBox.Show("Chuyển bàn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 }
@@ -132,6 +134,8 @@ namespace Cafe
                 TableProvider.Instance.UpdateTableStatus_1(table.Id);
 
                 LoadTable();
+
+                TableProvider.Instance.LoadListTable(cbTable, listTable);
 
                 MenuProvider.Instance.ShowMenu(table.Id, lvBill, txtTongTien);
             }
