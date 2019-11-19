@@ -94,7 +94,7 @@ namespace Cafe
                     MessageBox.Show("Không thực hiện chuyển bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
             else
-                MessageBox.Show("Bàn đã có người, hãy chọn bàn khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("Bàn đã có người, vui lòng chọn bàn khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
         #endregion
 
