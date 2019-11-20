@@ -43,6 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnThanhToan = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnBillAdd = new System.Windows.Forms.Button();
             this.cbDrink = new System.Windows.Forms.ComboBox();
@@ -59,7 +60,6 @@
             this.cbTable = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -80,7 +80,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1617, 87);
             this.panel1.TabIndex = 2;
@@ -95,7 +95,7 @@
             this.btmLogout.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btmLogout.Image = ((System.Drawing.Image)(resources.GetObject("btmLogout.Image")));
             this.btmLogout.Location = new System.Drawing.Point(1298, 9);
-            this.btmLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btmLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btmLogout.Name = "btmLogout";
             this.btmLogout.Size = new System.Drawing.Size(218, 66);
             this.btmLogout.TabIndex = 9;
@@ -115,7 +115,7 @@
             this.btnQLaccount.Image = ((System.Drawing.Image)(resources.GetObject("btnQLaccount.Image")));
             this.btnQLaccount.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnQLaccount.Location = new System.Drawing.Point(1076, 9);
-            this.btnQLaccount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnQLaccount.Margin = new System.Windows.Forms.Padding(2);
             this.btnQLaccount.Name = "btnQLaccount";
             this.btnQLaccount.Size = new System.Drawing.Size(218, 66);
             this.btnQLaccount.TabIndex = 8;
@@ -131,7 +131,7 @@
             this.btClose.FlatAppearance.BorderSize = 0;
             this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btClose.Location = new System.Drawing.Point(1538, 9);
-            this.btClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btClose.Margin = new System.Windows.Forms.Padding(2);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(66, 66);
             this.btClose.TabIndex = 7;
@@ -151,7 +151,7 @@
             this.btnQLCategory.Image = ((System.Drawing.Image)(resources.GetObject("btnQLCategory.Image")));
             this.btnQLCategory.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnQLCategory.Location = new System.Drawing.Point(632, 9);
-            this.btnQLCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnQLCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnQLCategory.Name = "btnQLCategory";
             this.btnQLCategory.Size = new System.Drawing.Size(218, 66);
             this.btnQLCategory.TabIndex = 6;
@@ -173,7 +173,7 @@
             this.btnQLTable.Image = ((System.Drawing.Image)(resources.GetObject("btnQLTable.Image")));
             this.btnQLTable.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnQLTable.Location = new System.Drawing.Point(854, 9);
-            this.btnQLTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnQLTable.Margin = new System.Windows.Forms.Padding(2);
             this.btnQLTable.Name = "btnQLTable";
             this.btnQLTable.Size = new System.Drawing.Size(218, 66);
             this.btnQLTable.TabIndex = 0;
@@ -195,7 +195,7 @@
             this.btnQLDrink.Image = ((System.Drawing.Image)(resources.GetObject("btnQLDrink.Image")));
             this.btnQLDrink.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnQLDrink.Location = new System.Drawing.Point(410, 9);
-            this.btnQLDrink.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnQLDrink.Margin = new System.Windows.Forms.Padding(2);
             this.btnQLDrink.Name = "btnQLDrink";
             this.btnQLDrink.Size = new System.Drawing.Size(218, 66);
             this.btnQLDrink.TabIndex = 0;
@@ -218,7 +218,7 @@
             this.btnThongKe.Image = ((System.Drawing.Image)(resources.GetObject("btnThongKe.Image")));
             this.btnThongKe.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnThongKe.Location = new System.Drawing.Point(188, 9);
-            this.btnThongKe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThongKe.Margin = new System.Windows.Forms.Padding(2);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Size = new System.Drawing.Size(218, 66);
             this.btnThongKe.TabIndex = 0;
@@ -256,10 +256,10 @@
             // 
             this.txtTongTien.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTongTien.Location = new System.Drawing.Point(158, 527);
-            this.txtTongTien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTongTien.Margin = new System.Windows.Forms.Padding(2);
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.ReadOnly = true;
-            this.txtTongTien.Size = new System.Drawing.Size(215, 29);
+            this.txtTongTien.Size = new System.Drawing.Size(215, 34);
             this.txtTongTien.TabIndex = 4;
             this.txtTongTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTongTien.TextChanged += new System.EventHandler(this.txtTongTien_TextChanged);
@@ -286,7 +286,7 @@
             this.btnThanhToan.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThanhToan.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.Image")));
             this.btnThanhToan.Location = new System.Drawing.Point(377, 516);
-            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(2);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(169, 50);
             this.btnThanhToan.TabIndex = 0;
@@ -311,11 +311,26 @@
             this.panel2.Controls.Add(this.btnThanhToan);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(1066, 87);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(551, 572);
             this.panel2.TabIndex = 6;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.FlatAppearance.BorderSize = 3;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(486, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(58, 58);
+            this.button1.TabIndex = 10;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // btnXoa
             // 
@@ -327,13 +342,13 @@
             this.btnXoa.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
             this.btnXoa.Location = new System.Drawing.Point(423, 2);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(58, 58);
             this.btnXoa.TabIndex = 9;
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnXoa.UseVisualStyleBackColor = false;
-            this.btnXoa.Click += new System.EventHandler(this.button1_Click);
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnBillAdd
             // 
@@ -360,7 +375,7 @@
             this.cbDrink.Location = new System.Drawing.Point(2, 33);
             this.cbDrink.Margin = new System.Windows.Forms.Padding(2);
             this.cbDrink.Name = "cbDrink";
-            this.cbDrink.Size = new System.Drawing.Size(355, 27);
+            this.cbDrink.Size = new System.Drawing.Size(355, 32);
             this.cbDrink.TabIndex = 7;
             // 
             // cbCategory
@@ -370,7 +385,7 @@
             this.cbCategory.Location = new System.Drawing.Point(2, 2);
             this.cbCategory.Margin = new System.Windows.Forms.Padding(2);
             this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(355, 27);
+            this.cbCategory.Size = new System.Drawing.Size(355, 32);
             this.cbCategory.TabIndex = 7;
             this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
@@ -434,7 +449,7 @@
             this.btnChangeTable.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChangeTable.Image = ((System.Drawing.Image)(resources.GetObject("btnChangeTable.Image")));
             this.btnChangeTable.Location = new System.Drawing.Point(892, 0);
-            this.btnChangeTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnChangeTable.Margin = new System.Windows.Forms.Padding(2);
             this.btnChangeTable.Name = "btnChangeTable";
             this.btnChangeTable.Size = new System.Drawing.Size(170, 43);
             this.btnChangeTable.TabIndex = 0;
@@ -463,7 +478,7 @@
             this.cbTable.Location = new System.Drawing.Point(780, 7);
             this.cbTable.Margin = new System.Windows.Forms.Padding(2);
             this.cbTable.Name = "cbTable";
-            this.cbTable.Size = new System.Drawing.Size(108, 30);
+            this.cbTable.Size = new System.Drawing.Size(108, 35);
             this.cbTable.TabIndex = 8;
             // 
             // label2
@@ -487,30 +502,15 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 612);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1066, 47);
             this.panel3.TabIndex = 9;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.BorderSize = 3;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(486, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(58, 58);
-            this.button1.TabIndex = 10;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1617, 659);
             this.ControlBox = false;
@@ -521,7 +521,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";

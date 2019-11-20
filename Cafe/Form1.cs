@@ -145,44 +145,6 @@ namespace Cafe
                 MenuProvider.Instance.ShowMenu(table.Id, lvBill, txtTongTien);
             }
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            foreach (ListViewItem item in lvBill.SelectedItems)
-            {
-                string idBillInfo = item.SubItems[1].Text;
-
-                foreach (long id in listIdBillInfo)
-                {
-                    if (idBillInfo == id.ToString())
-                    {
-                        BillInfoProvider.Instance.DeleteBillInfo_By_IdBillInfo(id);
-                    }
-                }
-            }
-
-            Table table = lvBill.Tag as Table;
-
-            if (table != null)
-            {
-                long idBill = BillProvider.Instance.GetBillId_By_TableId(table.Id);
-
-                if (idBill != -1)
-                {
-                    List<BillInfo> a = BillInfoProvider.Instance.GetListBillInfo_By_IdBill(idBill);
-
-                    if (a.Count == 0)
-                        BillProvider.Instance.DeleteBill(idBill);
-
-                    TableProvider.Instance.UpdateTableStatus_0(table.Id);
-
-                    LoadTable();
-
-                    MenuProvider.Instance.ShowMenu(table.Id, lvBill, txtTongTien);
-                }
-            }
-            else
-                MessageBox.Show("Bạn chưa chọn bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
@@ -213,6 +175,50 @@ namespace Cafe
                     MessageBox.Show("Không có hóa đơn để thanh toán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            Table table = lvBill.Tag as Table;
+
+            if(table != null)
+            {
+                if (lvBill.SelectedItems.Count != 0)
+                {
+                    foreach (ListViewItem item in lvBill.SelectedItems)
+                    {
+                        string idBillInfo = item.SubItems[1].Text;
+
+                        foreach (long id in listIdBillInfo)
+                        {
+                            if (idBillInfo == id.ToString())
+                            {
+                                BillInfoProvider.Instance.DeleteBillInfo_By_IdBillInfo(id);
+                            }
+                        }
+                    }
+
+                    long idBill = BillProvider.Instance.GetBillId_By_TableId(table.Id);
+
+                    if (idBill != -1)
+                    {
+                        List<BillInfo> a = BillInfoProvider.Instance.GetListBillInfo_By_IdBill(idBill);
+
+                        if (a.Count == 0)
+                            BillProvider.Instance.DeleteBill(idBill);
+
+                        TableProvider.Instance.UpdateTableStatus_0(table.Id);
+
+                        LoadTable();
+
+                        MenuProvider.Instance.ShowMenu(table.Id, lvBill, txtTongTien);
+                    }
+                }
+                else
+                    MessageBox.Show("Bạn chưa chọn món cần xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+                MessageBox.Show("Bạn chưa chọn bàn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         #endregion
 
