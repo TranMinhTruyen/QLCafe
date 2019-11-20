@@ -124,7 +124,7 @@ namespace Cafe
                 return true;
             else
                 return false;
-        }
+        } // Unit Test
 
         public bool UpdateTable(long idTable, string name) // Unit Test
         {

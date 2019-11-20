@@ -86,6 +86,21 @@ namespace CafeTester
         }
 
         [TestMethod]
+        public void Test_Insert_Table()
+        {
+            string name = "A";
+
+            bool expected = true;
+            bool actual = TableProvider.Instance.InsertTable(name);
+
+            Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            long idMax = TableProvider.Instance.GetMaxTableID();
+            TableProvider.Instance.DeleteTable(idMax);
+        }
+
+        [TestMethod]
         [DeploymentItem(@"TableDataTestUpdate.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\TableDataTestUpdate.csv", "TableDataTestUpdate#csv", DataAccessMethod.Sequential)]
         public void Test_Update_Table()
@@ -101,7 +116,8 @@ namespace CafeTester
             Assert.AreEqual(expected, actual);
 
             // Delete Test Data
-            TableProvider.Instance.DeleteTable(7);
+            long idMax = TableProvider.Instance.GetMaxTableID();
+            TableProvider.Instance.DeleteTable(idMax);
         }
 
         [TestMethod]
@@ -120,7 +136,9 @@ namespace CafeTester
             Assert.AreEqual(expected, actual);
 
             // Delete Test Data
-            TableProvider.Instance.DeleteTable(7);
+            long idMax = TableProvider.Instance.GetMaxTableID();
+            TableProvider.Instance.DeleteTable(idMax);
+
         }
 
         [TestMethod]
@@ -139,7 +157,8 @@ namespace CafeTester
             Assert.AreEqual(expected, actual);
 
             // Delete Test Data
-            TableProvider.Instance.DeleteTable(7);
+            long idMax = TableProvider.Instance.GetMaxTableID();
+            TableProvider.Instance.DeleteTable(idMax);
         }
 
         [TestMethod]
@@ -157,8 +176,11 @@ namespace CafeTester
 
             Assert.AreEqual(expected, actual);
 
-            // Delete Test Data
-            TableProvider.Instance.DeleteTable(7);
+            if (id == 0)
+            {
+                long idMax = TableProvider.Instance.GetMaxTableID();
+                TableProvider.Instance.DeleteTable(idMax);
+            }
         }
 
         [TestMethod]
@@ -178,6 +200,21 @@ namespace CafeTester
 
         #region Test Category Methods
         [TestMethod]
+        public void Test_Insert_Category()
+        {
+            string name = "A";
+
+            bool expected = true;
+            bool actual = CategoryProvider.Instance.InsertCategory(name);
+
+            Assert.AreEqual(expected, actual);
+
+            // Delete Test Data
+            long idMax = CategoryProvider.Instance.GetMaxCategoryID();
+            CategoryProvider.Instance.DeleteCategory(idMax);
+        }
+
+        [TestMethod]
         [DeploymentItem(@"CategoryDataTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\CategoryDataTest.csv", "CategoryDataTest#csv", DataAccessMethod.Sequential)]
         public void Test_Update_Category()
@@ -193,7 +230,8 @@ namespace CafeTester
             Assert.AreEqual(expected, actual);
 
             // Delete Test Data
-            CategoryProvider.Instance.DeleteCategory(4);
+            long idMax = CategoryProvider.Instance.GetMaxCategoryID();
+            CategoryProvider.Instance.DeleteCategory(idMax);
         }
      
         [TestMethod]
@@ -211,8 +249,11 @@ namespace CafeTester
 
             Assert.AreEqual(expected, actual);
 
-            // Delete Test Data
-            CategoryProvider.Instance.DeleteCategory(4);
+            if (id == 0)
+            {
+                long idMax = CategoryProvider.Instance.GetMaxCategoryID();
+                CategoryProvider.Instance.DeleteCategory(idMax);
+            }
         }
         #endregion
 
@@ -246,7 +287,11 @@ namespace CafeTester
             Assert.AreEqual(expected, actual);
 
             // Delete Test Data
-            DrinkProvider.Instance.DeleteDrink(10);
+            if(idCategory != 0)
+            {
+                long idMax = DrinkProvider.Instance.GetMaxDrinkId();
+                DrinkProvider.Instance.DeleteDrink(idMax);
+            }
         }
 
         [TestMethod]
@@ -267,7 +312,11 @@ namespace CafeTester
             Assert.AreEqual(expected, actual);
 
             // Delete Test Data
-            DrinkProvider.Instance.DeleteDrink(10);
+            if (id != 0)
+            {
+                long idMax = DrinkProvider.Instance.GetMaxDrinkId();
+                DrinkProvider.Instance.DeleteDrink(idMax);
+            }
         }
 
         [TestMethod]
@@ -279,7 +328,6 @@ namespace CafeTester
             string name = TestContext.DataRow[1].ToString();
             long idCategory = Convert.ToInt64(TestContext.DataRow[2].ToString());
 
-            CategoryProvider.Instance.InsertCategory(name); // Create Test Data
             DrinkProvider.Instance.InsertDrink(name, 0, idCategory); // Create Test Data
 
             bool expected = Convert.ToBoolean(TestContext.DataRow[4].ToString());
@@ -288,8 +336,11 @@ namespace CafeTester
             Assert.AreEqual(expected, actual);
 
             // Delete Test Data
-            DrinkProvider.Instance.DeleteDrink(10);
-            CategoryProvider.Instance.DeleteCategory(4);
+            if (idCategory == 0 && id != 0)
+            {
+                long idMax = DrinkProvider.Instance.GetMaxDrinkId();
+                DrinkProvider.Instance.DeleteDrink(idMax);
+            }
         }
         #endregion
 

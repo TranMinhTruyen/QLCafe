@@ -121,7 +121,7 @@ namespace Cafe
                 return true;
             else
                 return false;
-        }
+        } // Unit Test
 
         public bool UpdateCategory(long id, string name) // Unit Test
         {

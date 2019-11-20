@@ -46,21 +46,6 @@ namespace Cafe
             return listDrink;
         }
 
-        public void LoadDrink_ByCategoryId(ComboBox cbDrink , ComboBox cbCategory, object sender)
-        {
-            long idCategory = CategoryProvider.Instance.GetCategoryId(cbCategory, sender);
-
-            if (idCategory != -1)
-            {
-                List<Drink> listDrink = GetDrink_ByCategoryId(idCategory);
-
-                cbDrink.DataSource = listDrink;
-                cbDrink.DisplayMember = "Name";
-            }
-            else
-                cbDrink.Text = "Chưa có danh sách thức uống";
-        }
-
         public List<Drink> GetListDrink()
         {
             string query = "SELECT * FROM Drink";
@@ -190,6 +175,21 @@ namespace Cafe
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
 
             return data;
+        }
+
+        public void LoadDrink_ByCategoryId(ComboBox cbDrink, ComboBox cbCategory, object sender)
+        {
+            long idCategory = CategoryProvider.Instance.GetCategoryId(cbCategory, sender);
+
+            if (idCategory != -1)
+            {
+                List<Drink> listDrink = GetDrink_ByCategoryId(idCategory);
+
+                cbDrink.DataSource = listDrink;
+                cbDrink.DisplayMember = "Name";
+            }
+            else
+                cbDrink.Text = "Chưa có danh sách thức uống";
         }
 
         public void Binding_NamePriceDrink(TextBox txtName, NumericUpDown nudPrice, DataGridView dgvDrink)
